@@ -1,3 +1,56 @@
+@import "@fortawesome/fontawesome-free/css/all.css";
+@import "@splidejs/splide/dist/css/splide.min.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.wrapper {
+    display: flex;
+    width: 90%;
+    max-width: 1300px;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Typo */
+
+h2 {
+    @apply text-2xl font-semibold text-slate-700;
+}
+h4 {
+    @apply text-xl font-medium text-slate-600;
+}
+p {
+    @apply text-base font-normal text-slate-500;
+}
+
+.btn-primary {
+    @apply py-2 px-4 bg-amber-100 rounded-md;
+}
+
+.input-group {
+    @apply relative flex-1;
+}
+.input-group input {
+    @apply w-full bg-amber-50 border h-8 px-2 rounded-md;
+}
+.select-group {
+    @apply relative flex-1;
+}
+.select-group select {
+    @apply w-full bg-amber-50 border h-8 px-2 rounded-md;
+}
+.textarea-group {
+    @apply relative flex-1;
+}
+.textarea-group textarea {
+    @apply w-full bg-amber-50 border h-[150px] p-2 rounded-md resize-none;
+}
