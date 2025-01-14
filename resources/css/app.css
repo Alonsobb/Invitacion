@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&family=Playwrite+NL:wght@100..400&display=swap");
 @import "@fortawesome/fontawesome-free/css/all.css";
 @import "@splidejs/splide/dist/css/splide.min.css";
 
@@ -5,7 +6,16 @@
 @tailwind components;
 @tailwind utilities;
 
-.container {
+* {
+    font-family: "Josefin Slab", serif;
+}
+
+.cursiva {
+    font-family: "Playwrite NL", serif;
+}
+
+.containers {
+    position: relative;
     display: flex;
     width: 100%;
     justify-content: center;
@@ -29,28 +39,28 @@ h4 {
     @apply text-xl font-medium text-slate-600;
 }
 p {
-    @apply text-base font-normal text-slate-500;
+    @apply text-lg font-medium text-slate-600;
 }
 
 .btn-primary {
-    @apply py-2 px-4 bg-amber-100 rounded-md;
+    @apply py-2 px-4 bg-amber-900/20 hover:bg-amber-900/30 rounded-md;
 }
 
 .input-group {
     @apply relative flex-1;
 }
 .input-group input {
-    @apply w-full bg-amber-50 border h-8 px-2 rounded-md;
-}
+    @apply w-full bg-amber-900/10 border h-8 px-2 rounded-md outline-none transition-all focus:bg-amber-50 focus:border-amber-900/10;
+} 
 .select-group {
     @apply relative flex-1;
 }
 .select-group select {
-    @apply w-full bg-amber-50 border h-8 px-2 rounded-md;
+    @apply w-full bg-amber-900/10 border h-8 px-2 rounded-md outline-none transition-all focus:bg-amber-50 focus:border-amber-900/10;
 }
 .textarea-group {
     @apply relative flex-1;
 }
 .textarea-group textarea {
-    @apply w-full bg-amber-50 border h-[150px] p-2 rounded-md resize-none;
+    @apply w-full bg-amber-900/10 border h-[150px] p-2 rounded-md outline-none resize-none transition-all focus:bg-amber-50 focus:border-amber-900/10;
 }
