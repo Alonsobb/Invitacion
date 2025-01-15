@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('telefono')->nullable();
+            $table->string('telefono2')->nullable();
             $table->string('adultos')->nullable();
             $table->string('ninos')->nullable();
             $table->boolean('asistiran')->nullable();

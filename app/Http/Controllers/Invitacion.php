@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class Invitacion extends Controller
 {
     public function viewwelcome(){
-        return view('index');
+        return view('admin.index');
     }
     public function invitaciones(){
         return view('admin.invitaciones');
@@ -17,5 +17,9 @@ class Invitacion extends Controller
     }
     public function agregarinvitacionpost(){
         return view('admin.agregarinvitacion');
+    }
+
+    public function invitadoEspecial($invitado){
+        return view('welcome')->with('invitado', $invitado);
     }
 }

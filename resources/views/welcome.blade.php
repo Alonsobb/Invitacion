@@ -19,23 +19,39 @@
             <div class="w-full h-full flex flex-col items-center">
                 <h2 class="cursiva mt-24">Nuestra Boda</h2>
                 <div class="flex">
+                    @if(isset($invitado))
                     <img src="/content/vector0.png" alt="vector0" class="w-[450px]">
+                    @else
+                    <img src="/content/vector00.png" alt="vector0" class="w-[450px]">
+                    @endif
                 </div>
                 <h2 class="mb-4">Alonso y Chanel</h2>
+                @if(isset($invitado))
                 <h4>08 • Marzo • 25</h4>
+                @endif
             </div>
         </div>
         <img class="absolute top-0 left-0 md:w-[600px] w-[350px] rotate-[65deg] opacity-35 pointer-events-none" src="/content/vector1.png">
     </section>
 
     <section class="bg-amber-900/20 py-24">
+        @if(isset($invitado))
         <div class="flex flex-col justify-center items-center">
             <span class="text-2xl text-slate-500 mb-4">Invicación reservada para</span>
             <h2 class="mb-4">Isabel y Mauricio</h2>
             <img src="/content/linea1.png" alt="linea" class="mb-2">
             <h class="text-2xl">2 personas</h>
             <h4 class="text-2xl">2 niños</h4>
+            {!!QrCode::size(300)->generate('codigokonami') !!}
         </div>
+        @else
+        <div class="flex flex-col justify-center items-center">
+            <h2 class="mb-4">Ingresa tu numero de telefono para ingresa</h2>
+        <input type="elefono">
+        <button>Enviar</button>
+        <img src="/content/linea1.png" alt="linea" class="mb-2">
+        </div>
+        @endif
     </section>
 
     <!-- TODO: -->
@@ -48,23 +64,23 @@
                         <div class="">
                             <h4 class="cursiva">Novia</h4>
                             <div class="">
-                                <p>Nombre del padre</p>
-                                <p>Nombre del madre</p>
+                                <p>Lourdes</p>
+                                <p>Esequiel</p>
                             </div>
                         </div>
                         <div class="">
                             <h4 class="cursiva">Novio</h4>
                             <div class="">
-                                <p>Nombre del padre</p>
-                                <p>Nombre del madre</p>
+                                <p>Yanett Bernal</p>
+                                <p>Alonso Bravo</p>
                             </div>
                         </div>
                     </div>
                     <div class="my-8">
                         <h2 class="my-4">Acompañados de nuestros padrinos</h2>
                         <div class="">
-                            <p>Katya Ramírez García</p>
-                            <p>Eduardo Gómez Galván</p>
+                            <p>Javier Bernal</p>
+                            <p>Benita Rodrigez</p>
                         </div>
                     </div>
                 </div>
@@ -123,21 +139,25 @@
 
                 <div class="flex flex-col w-[300px] max-md:mb-12">
                     <h2 class="cursiva mb-8">Ceremonia</h2>
-                    <span class="mb-8 text-2xl">18:30hrs</span>
-                    <h4 class="mb-8 text-2xl">Iglesia San Josemaría Escrivá de Balaguer</h4>
-                    <span class="mb-8">José María Escrivá 550, Colinas de San Javier, 44660 Guadalajara, Jal.</span>
+                    @if(isset($invitado))
+                    <span class="mb-8 text-2xl">16:00hrs</span>
+                    @endif
+                    <h4 class="mb-8 text-2xl">Templo De San Marcos</h4>
+                    <span class="mb-8">Luis Echevarria 55, 63729 Lo de Marcos, Nay.</span>
                     <div class="flex justify-center">
-                        <a href="" class="btn-primary">Ver mapa</a>
+                        <a href="https://maps.app.goo.gl/8WyagFNbWwNpgk6n9" class="btn-primary">Ver mapa</a>
                     </div>
                 </div>
 
                 <div class="flex flex-col w-[300px]">
                     <h2 class="cursiva mb-8">Recepción</h2>
-                    <span class="mb-8 text-2xl">20:00hrs</span>
-                    <h4 class="mb-8 text-2xl">Lago del Rey, Jardín de eventos</h4>
-                    <span class="mb-8">Av Ramón Corona #5243, 45201 Guadalajara, Jal.</span>
+                    @if(isset($invitado))
+                    <span class="mb-8 text-2xl">18:00hrs</span>
+                    @endif
+                    <h4 class="mb-8 text-2xl">Rancho Los Reyes</h4>
+                    <span class="mb-8">direccion.</span>
                     <div class="flex justify-center">
-                        <a href="" class="btn-primary">Ver mapa</a>
+                        <a href="https://maps.app.goo.gl/HwnuetyomFsbqhVj8" class="btn-primary">Ver mapa</a>
                     </div>
                 </div>
             </div>
@@ -154,21 +174,27 @@
                     <div class="w-24 h-24 flex justify-center items-center bg-amber-50 text-[#D9AE79] rounded-full text-5xl mb-8">
                         <i class="fa-solid fa-church"></i>
                     </div>
+                    @if(isset($invitado)) 
                     <span>18:30hrs</span>
+                    @endif
                     <h2>CEREMONIA</h2>
                 </div>
                 <div class="flex flex-col items-center">
                     <div class="w-24 h-24 flex justify-center items-center bg-amber-50 text-[#D9AE79] rounded-full text-5xl mb-8">
                         <i class="fa-solid fa-users"></i>
                     </div>
+                    @if(isset($invitado)) 
                     <span>20:00hrs</span>
+                    @endif
                     <h2>RECEPCIÓN</h2>
                 </div>
                 <div class="flex flex-col items-center">
                     <div class="w-24 h-24 flex justify-center items-center bg-amber-50 text-[#D9AE79] rounded-full text-5xl mb-8">
                         <i class="fa-solid fa-champagne-glasses"></i>
                     </div>
+                    @if(isset($invitado)) 
                     <span>21:30hrs</span>
+                    @endif
                     <h2>CENA</h2>
                 </div>
                 <div class="flex flex-col items-center">
@@ -189,7 +215,9 @@
                             </g>
                         </svg>
                     </div>
+                    @if(isset($invitado)) 
                     <span>22:30hrs</span>
+                    @endif
                     <h2>FIESTA</h2>
                 </div>
 
@@ -221,18 +249,23 @@
             </div>
         </div>
     </section>
-
+       
+    
     <section class="containers py-24">
         <div class="wrapper items-center">
 
             <div class="border p-8 md:w-[600px] w-full flex flex-col items-center">
+                @if(isset($invitado))
                 <h2 class="mb-4">Confirma tu Asistencia</h2>
+                @endif
                 <img src="/content/linea4.png" alt="linea" class="mb-2">
+                @if(isset($invitado))
                 <h4 class="mb-4">Esta invitación está reservada para</h4>
                 <h2 class="mb-4">Isabel y Mauricio</h2>
                 <h4 class="mb-4">2 Personas</h4>
+                @endif
                 <p class="mb-4">Nuestro mejor regalo es tu presencia. Sin embargo, si deseas obsequiarnos algo estaremos recibiendo sobres el día del evento. ¡Gracias por formar parte de este día!</p>
-
+                @if(isset($invitado))
                 <form class="flex max-md:w-full flex-col gap-4 my-2">
                     <div class="w-full flex md:flex-wrap max-md:flex-col gap-4">
                         <div class="input-group">
@@ -252,7 +285,7 @@
                         <textarea type="text" placeholder="Mensajes para los novios"></textarea>
                     </div>
                 </form>
-
+@endif
             </div>
 
         </div>
