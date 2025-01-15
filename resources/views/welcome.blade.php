@@ -64,8 +64,8 @@
                         <div class="">
                             <h4 class="cursiva">Novia</h4>
                             <div class="">
-                                <p>Lourdes</p>
-                                <p>Esequiel</p>
+                                <p>Lourdes Zolorzano</p>
+                                <p>Esequiel Gonzales</p>
                             </div>
                         </div>
                         <div class="">
