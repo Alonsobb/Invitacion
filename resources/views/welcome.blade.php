@@ -177,7 +177,7 @@
                         <i class="fa-solid fa-church"></i>
                     </div>
                     @if(isset($invitado)) 
-                    <span>18:30hrs</span>
+                    <span>16:00hrs</span>
                     @endif
                     <h2>CEREMONIA</h2>
                 </div>
@@ -186,7 +186,7 @@
                         <i class="fa-solid fa-users"></i>
                     </div>
                     @if(isset($invitado)) 
-                    <span>20:00hrs</span>
+                    <span>18:00hrs</span>
                     @endif
                     <h2>RECEPCIÓN</h2>
                 </div>
@@ -195,7 +195,7 @@
                         <i class="fa-solid fa-champagne-glasses"></i>
                     </div>
                     @if(isset($invitado)) 
-                    <span>21:30hrs</span>
+                    <span>18:30hrs</span>
                     @endif
                     <h2>CENA</h2>
                 </div>
@@ -218,7 +218,7 @@
                         </svg>
                     </div>
                     @if(isset($invitado)) 
-                    <span>22:30hrs</span>
+                    <span>19:00hrs</span>
                     @endif
                     <h2>FIESTA</h2>
                 </div>
