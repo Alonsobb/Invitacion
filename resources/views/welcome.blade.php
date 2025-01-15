@@ -47,9 +47,16 @@
         @else
         <div class="flex flex-col justify-center items-center">
             <h2 class="mb-4">Ingresa tu numero de telefono para ingresa</h2>
-        <input type="elefono">
-        <button>Enviar</button>
-        <img src="/content/linea1.png" alt="linea" class="mb-2">
+            <img src="/content/linea1.png" alt="linea" class="mb-2">
+            <form class="bg-slate-50 md:w-[500px] w-11/12 px-4 py-3 items-center text-center rounded-md">
+                <p class="mb-2">Número de Telefono</p>
+                <div class="input-group mb-4">
+                    <input type="tel" class="text-center" placeholder="322-333-33-22">
+                </div>
+                <div class="flex justify-center">
+                    <button class="btn-primary">Enviar</butt>
+                </div>
+            </form>
         </div>
         @endif
     </section>
@@ -110,25 +117,24 @@
                 <div class="splide__track">
                     <ul class="splide__list">
                         <li class="splide__slide">
-                            <div class="h-[500px]">
+                            <div class="w-full">
                                 <img src="/content/img/img00.jpeg" alt="Vector"
-                                    class="w-full h-full" />
+                                    class="w-full h-[600px] object-cover rounded-md" />
                             </div>
                         </li>
-               
                         <li class="splide__slide">
-                            <div class="h-[500px]">
+                            <div class="w-full">
                                 <img src="/content/img/img001.jpeg" alt="Vector"
-                                    class="w-full h-full" />
+                                    class="w-full h-[600px] object-cover rounded-md" />
                             </div>
                         </li>
                         <li class="splide__slide">
-                            <div class="h-[500px]">
+                            <div class="w-full">
                                 <img src="/content/img/img002.jpeg" alt="Vector"
-                                    class="w-full h-full" />
+                                    class="w-full h-[600px] object-cover rounded-md" />
                             </div>
                         </li>
-                  
+
                     </ul>
                 </div>
             </section>
@@ -161,13 +167,13 @@
                     <div class="flex justify-center">
                         <a href="https://maps.app.goo.gl/HwnuetyomFsbqhVj8" class="btn-primary">Ver mapa</a>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
         <img class="absolute top-0 right-0 w-[600px] opacity-35 pointer-events-none" src="/content/vector2.png">
     </section>
-   {{--  
+    {{--
     <section class="containers bg-amber-900/20 py-24">
         <div class="wrapper">
 
@@ -252,8 +258,8 @@
             </div>
         </div>
     </section>
-       
-    
+
+
     <section class="containers py-24">
         <div class="wrapper items-center">
 
@@ -288,7 +294,7 @@
                         <textarea type="text" placeholder="Mensajes para los novios"></textarea>
                     </div>
                 </form>
-@endif
+                @endif
             </div>
 
         </div>
