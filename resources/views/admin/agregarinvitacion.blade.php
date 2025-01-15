@@ -91,18 +91,37 @@
     }
 @endsection
 @section('app')
+
+@if(session()->has('success'))
+    <div class="alert alert-success">
+        {{ session()->get('success') }}
+    </div>
+@endif
     <form action="{{ route('agregarinvitacionpost') }}" method="post">
         @csrf
         <br><label for="nombre">Nombre</label>
-        <input type="text" name="nombre" class="input" placeholder="Nombre">
+        <input type="text" name="nombre" class="input" placeholder="Nombre"
+            @if ($errors->all()) value="{{ old('nombre') }}" @endif>
+        @foreach ($errors->get('nombre') as $error)
+            <p class="help is-danger">{{ $error }}</p>
+        @endforeach
         <br><label for="telefono">Telefono</label>
-        <input type="text" name="telefono" class="input" placeholder="Telefono">
+        <input type="text" name="telefono" class="input" placeholder="Telefono"  @if ($errors->all()) class="is-danger" value="{{ old('telefono') }}" @endif >
+        @foreach ($errors->get('telefono') as $error)
+            <p class="help is-danger">{{ $error }}</p>
+        @endforeach
         <br><label for="adultos">Adultos</label>
-        <input type="text" name="adultos" class="input" placeholder="Adultos">
+        <input type="text" name="adultos" class="input" placeholder="Adultos"@if ($errors->all()) value="{{ old('adultos') }}" @endif >
+        @foreach ($errors->get('adultos') as $error)
+            <p class="help is-danger">{{ $error }}</p>
+        @endforeach
         <br><label for="ninos">Niños</label>
-        <input type="text" name="ninos" class="input" placeholder="Niños">
+        <input type="text" name="ninos" class="input" placeholder="Niños" @if ($errors->all()) value="{{ old('ninos') }}" @endif >
+        @foreach ($errors->get('ninos') as $error)
+            <p class="help is-danger">{{ $error }}</p>
+        @endforeach
         <br><label for="comentario">Comentario</label>
-        <input type="textarea" name="comentario" class="input" placeholder="Comentario">
+        <input type="textarea" name="comentario" class="input" placeholder="Comentario" @if ($errors->all()) value="{{ old('comentario') }}" @endif >
         <input type="submit" class="button is-success" value="acceptar">
     </form>
 @endsection

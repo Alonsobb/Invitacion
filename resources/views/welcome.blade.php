@@ -17,15 +17,15 @@
     <section class="containers md:h-svh py-24">
         <div class="wrapper">
             <div class="w-full h-full flex flex-col items-center">
-                <h2 class="cursiva mt-24">Nuestra Boda</h2>
+                {{-- <h2 class="cursiva mt-24">Nuestra Boda</h2> --}}
                 <div class="flex">
                     @if(isset($invitado))
-                    <img src="/content/vector0.png" alt="vector0" class="w-[450px]">
+                    <img src="/content/vector0.png" alt="vector0" class="w-[650px]">
                     @else
-                    <img src="/content/vector00.png" alt="vector0" class="w-[450px]">
+                    <img src="/content/vector00.png" alt="vector0" class="w-[650px]">
                     @endif
                 </div>
-                <h2 class="mb-4">Alonso y Chanell</h2>
+                <h2 class="mb-4">Chanell y Alonso</h2>
                 @if(isset($invitado))
                 <h4>08 • Marzo • 25</h4>
                 @endif
@@ -64,23 +64,23 @@
                         <div class="">
                             <h4 class="cursiva">Novia</h4>
                             <div class="">
-                                <p>Lourdes Zolorzano</p>
-                                <p>Esequiel Gonzales</p>
+                                <p>Ma. Lourdes Zolorzano Lopez</p>
+                                <p>Ezequiel Gonzalez Soriano</p>
                             </div>
                         </div>
                         <div class="">
                             <h4 class="cursiva">Novio</h4>
                             <div class="">
-                                <p>Yanett Bernal</p>
-                                <p>Alonso Bravo</p>
+                                <p>Yanett Bernal Gomez</p>
+                                <p>Tapia Alonso Bravo Tapia</p>
                             </div>
                         </div>
                     </div>
                     <div class="my-8">
                         <h2 class="my-4">Acompañados de nuestros padrinos</h2>
                         <div class="">
-                            <p>Javier Bernal</p>
                             <p>Benita Rodrigez</p>
+                            <p>Javier Bernal</p>
                         </div>
                     </div>
                 </div>
@@ -135,7 +135,7 @@
         </div>
     </section>
 
-    <section class="containers md:h-svh py-24">
+    <section class="containers bg-amber-900/20 py-24">
         <div class="wrapper">
             <div class="flex max-md:flex-col max-md:items-center justify-center gap-8">
 
@@ -161,16 +161,17 @@
                     <div class="flex justify-center">
                         <a href="https://maps.app.goo.gl/HwnuetyomFsbqhVj8" class="btn-primary">Ver mapa</a>
                     </div>
+                    
                 </div>
             </div>
         </div>
         <img class="absolute top-0 right-0 w-[600px] opacity-35 pointer-events-none" src="/content/vector2.png">
     </section>
-
+   {{--  
     <section class="containers bg-amber-900/20 py-24">
         <div class="wrapper">
 
-            <div class="grid md:grid-cols-4 grid-cols-2 gap-4">
+        <div class="grid md:grid-cols-4 grid-cols-2 gap-4">
 
                 <div class="flex flex-col items-center">
                     <div class="w-24 h-24 flex justify-center items-center bg-amber-50 text-[#D9AE79] rounded-full text-5xl mb-8">
@@ -223,11 +224,11 @@
                     <h2>FIESTA</h2>
                 </div>
 
-            </div>
+            </div> 
 
         </div>
     </section>
-
+--}}
     <section class="containers h-svh py-24">
         <div class="wrapper items-center">
             <div class="border-2 md:w-[600px] md:p-24 p-12 rounded-lg">
@@ -300,8 +301,8 @@
 
                 <h2>Comparte con nosotros todas tus fotografías del evento, etiquetando a los novios en tus publicaciones e historias de Instagram.</h2>
                 <div class="grid grid-cols-2 gap-4">
-                    <h2>@SandraTorres</h2>
-                    <h2>@DanielRamirez</h2>
+                    <h2>@GiovanaChanell</h2>
+                    <h2>@AlonsoBravo</h2>
                 </div>
 
             </div>

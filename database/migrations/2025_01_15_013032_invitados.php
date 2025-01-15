@@ -15,13 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('telefono')->nullable();
-            $table->string('telefono2')->nullable();
+            $table->string('telefono_personal')->nullable();
             $table->string('adultos')->nullable();
             $table->string('ninos')->nullable();
             $table->boolean('asistiran')->nullable();
             $table->string('adultos_accep')->nullable();
             $table->string('ninos_accep')->nullable();
             $table->string('comentario')->nullable();
+            $table->string('comentario_personal')->nullable();
             $table->timestamps();
         });
 
