@@ -86,7 +86,7 @@
                 </div>
 
                 <div class="w-[300px] h-[500px]">
-                    <img src="/content/img/img00.jpeg" alt="Vector"
+                    <img src="/content/img/img001.jpeg" alt="Vector"
                         class="w-full h-full object-cover" />
                 </div>
             </div>
