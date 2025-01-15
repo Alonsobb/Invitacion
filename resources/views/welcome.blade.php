@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Alonso y Chanel</title>
+    <title>Alonso y Chanell</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -25,7 +25,7 @@
                     <img src="/content/vector00.png" alt="vector0" class="w-[450px]">
                     @endif
                 </div>
-                <h2 class="mb-4">Alonso y Chanel</h2>
+                <h2 class="mb-4">Alonso y Chanell</h2>
                 @if(isset($invitado))
                 <h4>08 • Marzo • 25</h4>
                 @endif
