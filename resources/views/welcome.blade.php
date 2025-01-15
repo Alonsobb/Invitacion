@@ -86,7 +86,7 @@
                 </div>
 
                 <div class="w-[300px] h-[500px]">
-                    <img src="https://static.wixstatic.com/media/f31768_d1bf5fc30903479db90ec9ef4f5a2bf8~mv2.jpg/v1/fill/w_306,h_485,fp_0.3_0.39,q_80/f31768_d1bf5fc30903479db90ec9ef4f5a2bf8~mv2.webp" alt="Vector"
+                    <img src="/content/img/img00.jpeg" alt="Vector"
                         class="w-full h-full object-cover" />
                 </div>
             </div>
@@ -111,22 +111,24 @@
                     <ul class="splide__list">
                         <li class="splide__slide">
                             <div class="h-[500px]">
-                                <img src="https://static.wixstatic.com/media/f31768_d1bf5fc30903479db90ec9ef4f5a2bf8~mv2.jpg/v1/fill/w_306,h_485,fp_0.3_0.39,q_80/f31768_d1bf5fc30903479db90ec9ef4f5a2bf8~mv2.webp" alt="Vector"
+                                <img src="/content/img/img00.jpeg" alt="Vector"
+                                    class="w-full h-full" />
+                            </div>
+                        </li>
+               
+                        <li class="splide__slide">
+                            <div class="h-[500px]">
+                                <img src="/content/img/img001.jpeg" alt="Vector"
                                     class="w-full h-full" />
                             </div>
                         </li>
                         <li class="splide__slide">
                             <div class="h-[500px]">
-                                <img src="https://static.wixstatic.com/media/f31768_d1bf5fc30903479db90ec9ef4f5a2bf8~mv2.jpg/v1/fill/w_306,h_485,fp_0.3_0.39,q_80/f31768_d1bf5fc30903479db90ec9ef4f5a2bf8~mv2.webp" alt="Vector"
+                                <img src="/content/img/img002.jpeg" alt="Vector"
                                     class="w-full h-full" />
                             </div>
                         </li>
-                        <li class="splide__slide">
-                            <div class="h-[500px]">
-                                <img src="https://static.wixstatic.com/media/f31768_d1bf5fc30903479db90ec9ef4f5a2bf8~mv2.jpg/v1/fill/w_306,h_485,fp_0.3_0.39,q_80/f31768_d1bf5fc30903479db90ec9ef4f5a2bf8~mv2.webp" alt="Vector"
-                                    class="w-full h-full" />
-                            </div>
-                        </li>
+                  
                     </ul>
                 </div>
             </section>
