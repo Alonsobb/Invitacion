@@ -1,21 +1,7 @@
 @extends('layout.index')
-@section('css')
-    /* Reset de márgenes y paddings */
-    * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    }
 
-    /* Estilo del body */
-    body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    }
+@section('css')
+  
 
     /* Contenedor del formulario */
     .form-container {
@@ -90,14 +76,17 @@
     }
     }
 @endsection
+
 @section('app')
 
+<div class="w-11/12 flex justify-center ">
 
-    <form action="{{ route('agregarinvitacionpost') }}" method="post">
+
+    <form action="{{ route('agregarinvitacionpost') }}"  method="post">
         @csrf
         <br><label for="nombre">Nombre</label>
-        <input type="text" name="nombre"  placeholder="Nombre" class="input @error('nombre') is-danger @enderror"  
-           @if ($errors->all()) value="{{ old('nombre') }}" >
+        <input type="text" name="nombre"  placeholder="Nombre" class="input  @error('nombre')is-danger @enderror"  
+           @if ($errors->all()) value="{{ old('nombre') }} "@endif >
         @foreach ($errors->get('nombre') as $error)
             <p class="help is-danger">{{ $error }}</p>
         @endforeach
@@ -120,11 +109,11 @@
         <input type="textarea" name="comentario"  placeholder="Comentario" @if ($errors->all())  value="{{ old('comentario') }}" @endif class="input" >
         <input type="submit" class="button is-success" value="acceptar">
     </form>
+</div>
 @endsection
 
 @section('script')
-@if(session()->has('success'))
-   
+@if( session()->has('success') )
 <script>
     Swal.fire({
   position: "top-end",
@@ -135,5 +124,4 @@
 });
 </script>
 @endif
-
 @endsection

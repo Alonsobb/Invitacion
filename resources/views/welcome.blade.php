@@ -46,11 +46,11 @@
                     <h class="text-2xl">{{ $invitado->adultos }} Adultos</h>
                 @endif
                 @if (isset($invitado->ninos))
-                    <h4 class="text-2xl">{{ $invitado->ninos }} 2 Niños</h4>
+                    <h class="text-2xl">{{ $invitado->ninos }}  Niños</h>
                 @endif
                 @if (isset($invitado->adultos))
                     {!! QrCode::size(300)->generate(
-                        '[' . $invitado->nombre . ', Adultos:' . $invitado->adultos . ', Niños;' . $invitado->ninos . ']',
+                        '[' . $invitado->nombre . ', Adultos:' . $invitado->adultos . ', NiÃ±os;' . $invitado->ninos . ']',
                     ) !!}
                 @endif
             </div>
@@ -283,7 +283,7 @@
                         <h class="text-2xl">{{ $invitado->adultos }} Adultos</h>
                     @endif
                     @if (isset($invitado->ninos))
-                        <h4 class="text-2xl">{{ $invitado->ninos }} 2 Niños</h4>
+                        <h4 class="text-2xl">{{ $invitado->ninos }}  Niños</h4>
                     @endif
                 @endif
                 <p class="mb-4">Nuestro mejor regalo es tu presencia.</p><p>¡Gracias por formar parte de este día!</p>
