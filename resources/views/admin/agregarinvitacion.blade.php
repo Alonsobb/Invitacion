@@ -96,8 +96,8 @@
     <form action="{{ route('agregarinvitacionpost') }}" method="post">
         @csrf
         <br><label for="nombre">Nombre</label>
-        <input type="text" name="nombre"  placeholder="Nombre"
-            @if ($errors->get('nombre')) class="input is-danger"  @endif   @if ($errors->all()) value="{{ old('nombre') }}" @endif class="input">
+        <input type="text" name="nombre"  placeholder="Nombre" class="input @error('nombre') is-danger @enderror"  
+           @if ($errors->all()) value="{{ old('nombre') }}" >
         @foreach ($errors->get('nombre') as $error)
             <p class="help is-danger">{{ $error }}</p>
         @endforeach

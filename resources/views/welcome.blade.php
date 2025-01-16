@@ -39,7 +39,7 @@
     <section class="bg-amber-900/20 py-24">
         @if (isset($invitado))
             <div class="flex flex-col justify-center items-center">
-                <span class="text-2xl text-slate-500 mb-4">Invicación reservada para</span>
+                <span class="text-2xl text-slate-500 mb-4">Invitación reservada para</span>
                 <h2 class="mb-4">{{ $invitado->nombre }}</h2>
                 <img src="/content/linea1.png" alt="linea" class="mb-2">
                 @if (isset($invitado->adultos))
@@ -91,7 +91,7 @@
                             <h4 class="cursiva">Novio</h4>
                             <div class="">
                                 <p>Yanett Bernal Gomez</p>
-                                <p>Tapia Alonso Bravo Tapia</p>
+                                <p>Nicolas Alonso Bravo Tapia</p>
                             </div>
                         </div>
                     </div>
