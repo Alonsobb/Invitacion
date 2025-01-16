@@ -13,7 +13,9 @@ class Invitacion extends Controller
         return view('admin.index');
     }
     public function invitaciones(){
-        return view('admin.invitaciones');
+
+        $invitados =Invitados::all();
+        return view('admin.invitaciones')->with('invitados',$invitados);
     }
     public function agregarinvitacion(){
         return view('admin.agregarinvitacion');
