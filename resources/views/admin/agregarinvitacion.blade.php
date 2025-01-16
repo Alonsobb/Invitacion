@@ -92,36 +92,48 @@
 @endsection
 @section('app')
 
-@if(session()->has('success'))
-    <div class="alert alert-success">
-        {{ session()->get('success') }}
-    </div>
-@endif
+
     <form action="{{ route('agregarinvitacionpost') }}" method="post">
         @csrf
         <br><label for="nombre">Nombre</label>
-        <input type="text" name="nombre" class="input" placeholder="Nombre"
-            @if ($errors->all()) value="{{ old('nombre') }}" @endif>
+        <input type="text" name="nombre"  placeholder="Nombre"
+            @if ($errors->get('nombre')) class="input is-danger"  @endif   @if ($errors->all()) value="{{ old('nombre') }}" @endif class="input">
         @foreach ($errors->get('nombre') as $error)
             <p class="help is-danger">{{ $error }}</p>
         @endforeach
         <br><label for="telefono">Telefono</label>
-        <input type="text" name="telefono" class="input" placeholder="Telefono"  @if ($errors->all()) class="is-danger" value="{{ old('telefono') }}" @endif >
+        <input type="text" name="telefono" placeholder="Telefono"  @if ($errors->get('telefono')) class="input is-danger" @endif  @if ($errors->all()) value="{{ old('telefono') }}"  @endif class="input"  >
         @foreach ($errors->get('telefono') as $error)
             <p class="help is-danger">{{ $error }}</p>
         @endforeach
         <br><label for="adultos">Adultos</label>
-        <input type="text" name="adultos" class="input" placeholder="Adultos"@if ($errors->all()) value="{{ old('adultos') }}" @endif >
+        <input type="text" name="adultos" placeholder="Adultos"@if ($errors->all())  value="{{ old('adultos') }}" @endif class="input"  >
         @foreach ($errors->get('adultos') as $error)
             <p class="help is-danger">{{ $error }}</p>
         @endforeach
         <br><label for="ninos">Niños</label>
-        <input type="text" name="ninos" class="input" placeholder="Niños" @if ($errors->all()) value="{{ old('ninos') }}" @endif >
+        <input type="text" name="ninos"  placeholder="Niños" @if ($errors->all()) value="{{ old('ninos') }}" @endif class="input" >
         @foreach ($errors->get('ninos') as $error)
             <p class="help is-danger">{{ $error }}</p>
         @endforeach
         <br><label for="comentario">Comentario</label>
-        <input type="textarea" name="comentario" class="input" placeholder="Comentario" @if ($errors->all()) value="{{ old('comentario') }}" @endif >
+        <input type="textarea" name="comentario"  placeholder="Comentario" @if ($errors->all())  value="{{ old('comentario') }}" @endif class="input" >
         <input type="submit" class="button is-success" value="acceptar">
     </form>
+@endsection
+
+@section('script')
+@if(session()->has('success'))
+   
+<script>
+    Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "Se agrego correctamente",
+  showConfirmButton: false,
+  timer: 1500
+});
+</script>
+@endif
+
 @endsection

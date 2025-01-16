@@ -14,15 +14,17 @@ return new class extends Migration
         Schema::create('invitados', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
+            $table->string('novios')->nullable();
             $table->string('telefono')->nullable();
             $table->string('telefono_personal')->nullable();
             $table->string('adultos')->nullable();
             $table->string('ninos')->nullable();
-            $table->boolean('asistiran')->nullable();
+            $table->string('asistiran')->nullable();
             $table->string('adultos_accep')->nullable();
             $table->string('ninos_accep')->nullable();
             $table->string('comentario')->nullable();
-            $table->string('comentario_personal')->nullable();
+            $table->longText('comentario_personal')->nullable();
+           /*  $table->longText('token')->nullable(); */
             $table->timestamps();
         });
 

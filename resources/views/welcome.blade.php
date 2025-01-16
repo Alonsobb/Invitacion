@@ -11,6 +11,7 @@
     <!-- Styles / Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+{{-- @dd($invitado) --}}
 
 <body>
     <!-- TODO: S -->
@@ -19,45 +20,56 @@
             <div class="w-full h-full flex flex-col items-center">
                 {{-- <h2 class="cursiva mt-24">Nuestra Boda</h2> --}}
                 <div class="flex">
-                    @if(isset($invitado))
-                    <img src="/content/vector0.png" alt="vector0" class="w-[650px]">
+                    @if (isset($invitado))
+                        <img src="/content/vector0.png" alt="vector0" class="w-[650px]">
                     @else
-                    <img src="/content/vector00.png" alt="vector0" class="w-[650px]">
+                        <img src="/content/vector00.png" alt="vector0" class="w-[650px]">
                     @endif
                 </div>
                 <h2 class="mb-4">Chanell y Alonso</h2>
-                @if(isset($invitado))
-                <h4>08 • Marzo • 25</h4>
+                @if (isset($invitado))
+                    <h4>08 • Marzo • 25</h4>
                 @endif
             </div>
         </div>
-        <img class="absolute top-0 left-0 md:w-[600px] w-[350px] rotate-[65deg] opacity-35 pointer-events-none" src="/content/vector1.png">
+        <img class="absolute top-0 left-0 md:w-[600px] w-[350px] rotate-[65deg] opacity-35 pointer-events-none"
+            src="/content/vector1.png">
     </section>
 
     <section class="bg-amber-900/20 py-24">
-        @if(isset($invitado))
-        <div class="flex flex-col justify-center items-center">
-            <span class="text-2xl text-slate-500 mb-4">Invicación reservada para</span>
-            <h2 class="mb-4">Isabel y Mauricio</h2>
-            <img src="/content/linea1.png" alt="linea" class="mb-2">
-            <h class="text-2xl">2 personas</h>
-            <h4 class="text-2xl">2 niños</h4>
-            {!!QrCode::size(300)->generate('codigokonami') !!}
-        </div>
+        @if (isset($invitado))
+            <div class="flex flex-col justify-center items-center">
+                <span class="text-2xl text-slate-500 mb-4">Invicación reservada para</span>
+                <h2 class="mb-4">{{ $invitado->nombre }}</h2>
+                <img src="/content/linea1.png" alt="linea" class="mb-2">
+                @if (isset($invitado->adultos))
+                    <h class="text-2xl">{{ $invitado->adultos }} Adultos</h>
+                @endif
+                @if (isset($invitado->ninos))
+                    <h4 class="text-2xl">{{ $invitado->ninos }} 2 Niños</h4>
+                @endif
+                @if (isset($invitado->adultos))
+                    {!! QrCode::size(300)->generate(
+                        '[' . $invitado->nombre . ', Adultos:' . $invitado->adultos . ', Niños;' . $invitado->ninos . ']',
+                    ) !!}
+                @endif
+            </div>
         @else
-        <div class="flex flex-col justify-center items-center">
-            <h2 class="mb-4">Ingresa tu numero de telefono para ingresa</h2>
-            <img src="/content/linea1.png" alt="linea" class="mb-2">
-            <form class="bg-slate-50 md:w-[500px] w-11/12 px-4 py-3 items-center text-center rounded-md">
-                <p class="mb-2">Número de Telefono</p>
-                <div class="input-group mb-4">
-                    <input type="tel" class="text-center" placeholder="322-333-33-22">
-                </div>
-                <div class="flex justify-center">
-                    <button class="btn-primary">Enviar</butt>
-                </div>
-            </form>
-        </div>
+            <div class="flex flex-col justify-center items-center">
+                <h2 class="mb-4">Ingresa tu numero de telefono para ingresa</h2>
+                <img src="/content/linea1.png" alt="linea" class="mb-2">
+                <form action="{{ route('telefono') }}" method="post"
+                    class="bg-slate-50 md:w-[500px] w-11/12 px-4 py-3 items-center text-center rounded-md">
+                    @csrf
+                    <p class="mb-2">Número de Telefono</p>
+                    <div class="input-group mb-4">
+                        <input type="tel" name="telefono" class="text-center" placeholder="322-333-33-22">
+                    </div>
+                    <div class="flex justify-center">
+                        <button class="btn-primary">Enviar</butt>
+                    </div>
+                </form>
+            </div>
         @endif
     </section>
 
@@ -93,8 +105,7 @@
                 </div>
 
                 <div class="w-[300px] h-[500px]">
-                    <img src="/content/img/img001.jpeg" alt="Vector"
-                        class="w-full h-full object-cover" />
+                    <img src="/content/img/img001.jpeg" alt="Vector" class="w-full h-full object-cover" />
                 </div>
             </div>
         </div>
@@ -104,8 +115,9 @@
 
     <section class="bg-amber-900/20 py-24">
         <div class="flex flex-col justify-center items-center text-center px-4">
-            <span class="text-3xl text-slate-500 mb-4">“Amor es solo una palabra, hasta que alguien llega para darle sentido”</span>
-            <h2 class="mb-4">Fecha de la boda</h2>
+            <span class="text-3xl text-slate-500 mb-4">“Amor es solo una palabra, hasta que alguien llega para darle
+                sentido”</span>
+            {{--      <h2 class="mb-4">Fecha de la boda</h2> --}}
         </div>
     </section>
 
@@ -134,21 +146,18 @@
                                     class="w-full h-[600px] object-cover rounded-md" />
                             </div>
                         </li>
-
                     </ul>
                 </div>
             </section>
         </div>
     </section>
-
     <section class="containers bg-amber-900/20 py-24">
         <div class="wrapper">
             <div class="flex max-md:flex-col max-md:items-center justify-center gap-8">
-
                 <div class="flex flex-col w-[300px] max-md:mb-12">
                     <h2 class="cursiva mb-8">Ceremonia</h2>
-                    @if(isset($invitado))
-                    <span class="mb-8 text-2xl">16:00hrs</span>
+                    @if (isset($invitado))
+                        <span class="mb-8 text-2xl">16:00hrs</span>
                     @endif
                     <h4 class="mb-8 text-2xl">Templo De San Marcos</h4>
                     <span class="mb-8">Luis Echevarria 55, 63729 Lo de Marcos, Nay.</span>
@@ -156,18 +165,16 @@
                         <a href="https://maps.app.goo.gl/8WyagFNbWwNpgk6n9" class="btn-primary">Ver mapa</a>
                     </div>
                 </div>
-
                 <div class="flex flex-col w-[300px]">
                     <h2 class="cursiva mb-8">Recepción</h2>
-                    @if(isset($invitado))
-                    <span class="mb-8 text-2xl">18:00hrs</span>
+                    @if (isset($invitado))
+                        <span class="mb-8 text-2xl">18:00hrs</span>
                     @endif
                     <h4 class="mb-8 text-2xl">Rancho Los Reyes</h4>
                     <span class="mb-8">direccion.</span>
                     <div class="flex justify-center">
                         <a href="https://maps.app.goo.gl/HwnuetyomFsbqhVj8" class="btn-primary">Ver mapa</a>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -183,7 +190,7 @@
                     <div class="w-24 h-24 flex justify-center items-center bg-amber-50 text-[#D9AE79] rounded-full text-5xl mb-8">
                         <i class="fa-solid fa-church"></i>
                     </div>
-                    @if(isset($invitado)) 
+                    @if (isset($invitado)) 
                     <span>16:00hrs</span>
                     @endif
                     <h2>CEREMONIA</h2>
@@ -192,7 +199,7 @@
                     <div class="w-24 h-24 flex justify-center items-center bg-amber-50 text-[#D9AE79] rounded-full text-5xl mb-8">
                         <i class="fa-solid fa-users"></i>
                     </div>
-                    @if(isset($invitado)) 
+                    @if (isset($invitado)) 
                     <span>18:00hrs</span>
                     @endif
                     <h2>RECEPCIÓN</h2>
@@ -201,7 +208,7 @@
                     <div class="w-24 h-24 flex justify-center items-center bg-amber-50 text-[#D9AE79] rounded-full text-5xl mb-8">
                         <i class="fa-solid fa-champagne-glasses"></i>
                     </div>
-                    @if(isset($invitado)) 
+                    @if (isset($invitado)) 
                     <span>18:30hrs</span>
                     @endif
                     <h2>CENA</h2>
@@ -224,7 +231,7 @@
                             </g>
                         </svg>
                     </div>
-                    @if(isset($invitado)) 
+                    @if (isset($invitado)) 
                     <span>19:00hrs</span>
                     @endif
                     <h2>FIESTA</h2>
@@ -241,10 +248,12 @@
                 <i class="fa-solid fa-envelope text-5xl text-amber-900/30 mb-12"></i>
                 <h2 class="mb-4">SUGERENCIA DE REGALO</h2>
                 <h4 class="cursiva mb-4">Lluvia de Sobres</h4>
-                <p>Nuestro mejor regalo es tu presencia. Sin embargo, si deseas obsequiarnos algo estaremos recibiendo sobres el día del evento. ¡Gracias por formar parte de este día!</p>
+                <p>Nuestro mejor regalo es tu presencia. Sin embargo, si deseas obsequiarnos algo estaremos recibiendo
+                    sobres el día del evento. ¡Gracias por formar parte de este día!</p>
             </div>
         </div>
-        <img class="absolute top-1/2 right-4 md:w-[600px] w-[350px] -translate-y-1/2 opacity-25 pointer-events-none" src="/content/vector3.png">
+        <img class="absolute top-1/2 right-4 md:w-[600px] w-[350px] -translate-y-1/2 opacity-25 pointer-events-none"
+            src="/content/vector3.png">
     </section>
 
     <section class="containers bg-amber-900/20 py-24">
@@ -264,36 +273,42 @@
         <div class="wrapper items-center">
 
             <div class="border p-8 md:w-[600px] w-full flex flex-col items-center">
-                @if(isset($invitado))
-                <h2 class="mb-4">Confirma tu Asistencia</h2>
+                @if (isset($invitado))
+                    <h2 class="mb-4">Confirma tu Asistencia</h2>
                 @endif
                 <img src="/content/linea4.png" alt="linea" class="mb-2">
-                @if(isset($invitado))
-                <h4 class="mb-4">Esta invitación está reservada para</h4>
-                <h2 class="mb-4">Isabel y Mauricio</h2>
-                <h4 class="mb-4">2 Personas</h4>
+                @if (isset($invitado))
+                    <h2 class="mb-4">{{ $invitado->nombre }}</h2>
+                    @if (isset($invitado->adultos))
+                        <h class="text-2xl">{{ $invitado->adultos }} Adultos</h>
+                    @endif
+                    @if (isset($invitado->ninos))
+                        <h4 class="text-2xl">{{ $invitado->ninos }} 2 Niños</h4>
+                    @endif
                 @endif
-                <p class="mb-4">Nuestro mejor regalo es tu presencia. Sin embargo, si deseas obsequiarnos algo estaremos recibiendo sobres el día del evento. ¡Gracias por formar parte de este día!</p>
-                @if(isset($invitado))
-                <form class="flex max-md:w-full flex-col gap-4 my-2">
-                    <div class="w-full flex md:flex-wrap max-md:flex-col gap-4">
-                        <div class="input-group">
-                            <input type="text" placeholder="Nombre de los asistentes">
+                <p class="mb-4">Nuestro mejor regalo es tu presencia.</p><p>¡Gracias por formar parte de este día!</p>
+                @if (isset($invitado))
+                    <form action="{{route('asistencia')}}"  method="post"class="flex max-md:w-full flex-col gap-4 my-2">
+                        @csrf
+                        <div class="w-full flex md:flex-wrap max-md:flex-col gap-4">
+                            <div class="input-group">
+                                <input type="tel" required name="telefono_personal" placeholder="Telefono" value="@if (isset($invitado->telefono_personal)) {{$invitado->telefono_personal}} @endif">
+                            </div>
                         </div>
-                        <div class="input-group">
-                            <input type="text" placeholder="Email">
+                        <input type="hidden" name="telefono" value="{{$invitado->telefono}}">
+                        <div class="select-group">
+                            <select type="text" name="asistencia" placeholder="Nombre de los asistentes">
+                                <option value="1">Si, asistiremos</option>
+                                <option value="2">Lo siento, no podremos asistir</option>
+                            </select>
                         </div>
-                    </div>
-                    <div class="select-group">
-                        <select type="text" placeholder="Nombre de los asistentes">
-                            <option value="1">Si, asistiremos</option>
-                            <option value="2">Lo siento, no podremos asistir</option>
-                        </select>
-                    </div>
-                    <div class="textarea-group">
-                        <textarea type="text" placeholder="Mensajes para los novios"></textarea>
-                    </div>
-                </form>
+                        <div class="textarea-group">
+                            <textarea type="text" name="comentario_personal" placeholder="Mensajes para los novios" >@if (isset($invitado->comentario_personal)) {{$invitado->comentario_personal}} @endif</textarea>
+                        </div>
+                        <div class="flex justify-center">
+                            <button class="btn-primary mt-4">Enviar</button>
+                        </div>
+                    </form>
                 @endif
             </div>
 
@@ -305,7 +320,8 @@
 
             <div class="">
 
-                <h2>Comparte con nosotros todas tus fotografías del evento, etiquetando a los novios en tus publicaciones e historias de Instagram.</h2>
+                <h2>Comparte con nosotros todas tus fotografías del evento, etiquetando a los novios en tus
+                    publicaciones e historias de Instagram.</h2>
                 <div class="grid grid-cols-2 gap-4">
                     <h2>@GiovanaChanell</h2>
                     <h2>@AlonsoBravo</h2>
