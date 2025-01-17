@@ -50,7 +50,7 @@ class Invitacion extends Controller
         $invitados->nombre = ucwords(strtolower($request->nombre));
         $invitados->telefono = str_replace(' ', '', $request->telefono);
         $invitados->adultos = $request->adultos;
-        $invitados->novios = 'Chanell';
+        $invitados->novios = Acceso::user()->name;
         $invitados->ninos = $request->ninos;
         $invitados->comentario = $request->comentario;
         /*  $invitados->token =  str_pad(bin2hex(strrev($request->telefono)), 16, "0"); */
@@ -96,10 +96,50 @@ class Invitacion extends Controller
                 $asistencia = 'Si Asistire';
             } else {
                 $asistencia = 'No Asistire';
-
             }
             DB::table('invitados')->where('telefono', $request->telefono)->update(['telefono_personal' => $request->telefono_personal, 'asistiran' => $asistencia, 'comentario_personal' => $request->comentario_personal]);
             return back();
         }
+    }
+
+
+    public function editinvitacion($invitacion)
+    {
+        if (Acceso::check()) {
+           $data = Invitados::where('telefono',$invitacion)->get();
+            return view('admin.agregarinvitacion')->with('data', $data[0]);
+        } else {
+            return view('admin.login');
+        }
+    }
+    public function editinvitacionpost(Request $request)
+    {
+        $invitados = Invitados::find($request->id);
+        $invitados->nombre = ucwords(strtolower($request->nombre));
+        $invitados->telefono = str_replace(' ', '', $request->telefono);
+        $invitados->adultos = $request->adultos;
+        $invitados->novios = Acceso::user()->name;
+        $invitados->ninos = $request->ninos;
+        $invitados->comentario = $request->comentario;
+        $registro = $invitados->save();
+        if ($registro) {
+            $path = route('invitaciones');
+        return redirect()->to($path);
+        } else {
+            return back()->with('fail', 'insert failed');
+        }
+    
+    }
+
+    public function eliminarinvitacion($invitacion)
+    {
+        if (Acceso::check()) {
+           $registro = Invitados::where('id',$invitacion)->delete();
+           if ($registro) {
+            return back()->with('success', 'Se borro correctamente');
+        } else {
+            return back()->with('fail', 'Error al eliminar');
+        }
+        } 
     }
 }

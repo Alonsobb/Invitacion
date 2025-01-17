@@ -20,9 +20,9 @@
 <body>
 
 
-    <nav class="navbar w-full is-fixed-top " role="navigation" aria-label="main navigation">
-        <div class="navbar-brand w-full ">
-            <nav class="navbar w-full" role="navigation" aria-label="main navigation">
+    <nav class="navbar w-full is-fixed-top" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand w-full  ">
+            <nav class="navbar w-full is-light" role="navigation" aria-label="main navigation">
                 <div class="navbar-brand">
                     <a class="" href="{{ route('dashboard') }}">
                         <img src="/content/vector00.png" class="w-[60px] object-cover">
@@ -44,7 +44,7 @@
                             Invitados
                         </a>
 
-                        <a class="navbar-item font-bold {{ request()->is('agregarinvitacion') ? 'is-active' : '' }} "
+                        <a class="navbar-item font-bold {{ request()->is('agregarinvitacion') ? 'is-active ' : '' }} "
                             href="{{ route('agregarinvitacion') }}">
                             Agregar Invitaciones
                         </a>
@@ -122,17 +122,7 @@
             });
 
         });
-        (document).ready(function() {
-
-            // Check for click events on the navbar burger icon
-            $(".navbar-burger").click(function() {
-
-                // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-                $(".navbar-burger").toggleClass("is-active");
-                $(".navbar-menu").toggleClass("is-active");
-
-            });
-        });
+    
     </script>
 </body>
 
