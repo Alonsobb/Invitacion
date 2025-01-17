@@ -19,10 +19,17 @@ class Invitacion extends Controller
             return view('admin.login');
         }
     }
-    public function invitaciones()
+    public function invitaciones(Request $request)
     {
         if (Acceso::check()) {
-            $invitados = Invitados::all();
+
+            $invitados = Invitados::when($request->query('nombre'), function ($query) use ($request) {
+                $query->where('nombre', 'LIKE', '%' . $request->query('nombre') . '%');
+            })->when($request->query('telefono'), function ($query) use ($request) {
+                $query->where('telefono', 'LIKE', '%' . $request->query('telefono') . '%');
+            })
+            ->get();
+
             return view('admin.invitaciones')->with('invitados', $invitados);
         } else {
             return view('admin.login');
