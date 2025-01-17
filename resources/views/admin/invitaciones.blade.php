@@ -39,7 +39,7 @@
                             <th>
                                <button class="button is-info" onclick="copy('{{route('invitado',$invitado->telefono)}}')">Copiar</button>
                                <a class="button is-info" href="{{route('editinvitacion',$invitado->telefono) }}">Editar</a>
-                               <a class="button is-danger" href="{{route('eliminarinvitacion',$invitado->id) }}">Editar</a>
+                               <a class="button is-danger" href="{{route('eliminarinvitacion',$invitado->id) }}">Eliminar</a>
                               </th>
 
                         </tr>
