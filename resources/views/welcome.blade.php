@@ -157,7 +157,9 @@
                 <div class="flex flex-col w-[300px] max-md:mb-12">
                     <h2 class="cursiva mb-8">Ceremonia</h2>
                     @if (isset($invitado))
-                        <span class="mb-8 text-2xl">16:00hrs</span>
+                        <span class="mb-8 text-2xl">4:00hPM</span>
+                        <span class="mb-6 text-2xl">Horario Jalisco</span>
+
                     @endif
                     <h4 class="mb-8 text-2xl">Templo De San Marcos</h4>
                     <span class="mb-8">Luis Echevarria 55, 63729 Lo de Marcos, Nay.</span>
@@ -168,10 +170,11 @@
                 <div class="flex flex-col w-[300px]">
                     <h2 class="cursiva mb-8">Recepción</h2>
                     @if (isset($invitado))
-                        <span class="mb-8 text-2xl">18:00hrs</span>
+                        <span class="mb-8 text-2xl">6:00 PM</span>
+                        <span class="mb-6 text-2xl">Horario Jalisco</span>
                     @endif
                     <h4 class="mb-8 text-2xl">Rancho Los Reyes</h4>
-                    <span class="mb-8">direccion.</span>
+                    <span class="mb-8">México 200 , El Tikilichi, 63732 San Francisco, Nay.</span>
                     <div class="flex justify-center">
                         <a href="https://maps.app.goo.gl/HwnuetyomFsbqhVj8" class="btn-primary">Ver mapa</a>
                     </div>
