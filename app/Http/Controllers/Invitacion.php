@@ -14,7 +14,13 @@ class Invitacion extends Controller
     public function viewwelcome()
     {
         if (Acceso::check()) {
-            return view('admin.index');
+            $novio_1 = Invitados::where('novios', 'alonso')->whereNotNull('adultos')->count('adultos');
+            $novio_2 = Invitados::where('novios', 'alonso')->whereNull('adultos')->count();
+            $novio = $novio_1 + $novio_2;
+            $novia_1 = Invitados::where('novios', 'alonso')->whereNotNull('adultos')->count('adultos');
+            $novia_2 = Invitados::where('novios', 'alonso')->whereNull('adultos')->count();
+            $novia = $novia_1+ $novia_2;
+            return view('admin.index')->with('Invitados_novio', $novio)->with('Invitados_novia',$novia);
         } else {
             return view('admin.login');
         }
@@ -27,7 +33,9 @@ class Invitacion extends Controller
                 $query->where('nombre', 'LIKE', '%' . $request->query('nombre') . '%');
             })->when($request->query('telefono'), function ($query) use ($request) {
                 $query->where('telefono', 'LIKE', '%' . $request->query('telefono') . '%');
-            })
+            })->when($request->query('novios'), function ($query) use ($request) {
+                $query->where('novios', 'LIKE', '%' . $request->query('novios') . '%');
+            })->orderBy('novios', 'desc')
             ->get();
 
             return view('admin.invitaciones')->with('invitados', $invitados);
@@ -113,7 +121,7 @@ class Invitacion extends Controller
     public function editinvitacion($invitacion)
     {
         if (Acceso::check()) {
-           $data = Invitados::where('telefono',$invitacion)->get();
+           $data = Invitados::where('id',$invitacion)->get();
             return view('admin.agregarinvitacion')->with('data', $data[0]);
         } else {
             return view('admin.login');

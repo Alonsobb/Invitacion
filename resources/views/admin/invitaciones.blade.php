@@ -15,6 +15,13 @@
                 <input class="input" type="text" placeholder="Nombre" name="nombre" />
                 <label class="label">Telefono</label>
                 <input class="input" type="text" placeholder="Telefono" name="telefono" />
+                <div class="select is-link">
+                    <select name="novios">
+                      <option value="">Selecciona uno</option>
+                      <option value="chanell">Chanell</option>
+                      <option value="alonso">Alonso</option>
+                    </select>
+                  </div>
                 <button type="submit" class="button is-success ">Buscar</button>
                 <a href="{{ route('invitaciones') }}" class="button is-warning">Reset</a>
             </form>
@@ -41,10 +48,13 @@
                         <th><abbr title="Opccion">Opccion</abbr></th>
                     </tr>
                 </tfoot>
+                @php 
+$numero=1;
+                @endphp
                 @foreach ($invitados as $invitado)
                     <tbody>
                         <tr>
-                            <th>{{ $invitado->id }}</th>
+                            <th>{{ $numero++ }}</th>
                             <th>{{ $invitado->novios }}</th>
                             <th>{{ $invitado->nombre }}</th>
                             <th>{{ isset($invitado->adultos) ? $invitado->adultos : '0' }}</th>
@@ -54,7 +64,7 @@
                                 <button class="button is-info"
                                     onclick="copy('{{ route('invitado', $invitado->telefono) }}')">Copiar</button>
                                 <a class="button is-info"
-                                    href="{{ route('editinvitacion', $invitado->telefono) }}">Editar</a>
+                                    href="{{ route('editinvitacion', $invitado->id) }}">Editar</a>
                                 <a class="button is-danger"
                                     href="{{ route('eliminarinvitacion', $invitado->id) }}">Eliminar</a>
                             </th>

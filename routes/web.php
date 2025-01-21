@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Invitacion;
 use App\Http\Controllers\Login;
+use App\Http\Controllers\Usuarios;
 use Illuminate\Support\Facades\Route;
 
 
@@ -24,6 +25,7 @@ Route::post('/editinvitacion', [Invitacion::class, 'editinvitacionpost'])->name(
 Route::get('/eliminarinvitacion/{invitado}', [Invitacion::class, 'eliminarinvitacion'])->name('eliminarinvitacion');
 
 
+/* Route::get('/usuarios', [Usuarios::class, 'usuarios'])->name('usuarios'); */
 
 
 

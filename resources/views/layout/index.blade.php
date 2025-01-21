@@ -39,6 +39,10 @@
 
                 <div id="navbarBasicExample" class="navbar-menu">
                     <div class="navbar-start">
+                        <a class="navbar-item font-bold {{ request()->is('dashboard') ? 'is-active' : '' }}"
+                            href="{{ route('dashboard') }}">
+                            Inicio
+                        </a>
                         <a class="navbar-item font-bold {{ request()->is('invitaciones') ? 'is-active' : '' }}"
                             href="{{ route('invitaciones') }}">
                             Invitados
@@ -48,6 +52,11 @@
                             href="{{ route('agregarinvitacion') }}">
                             Agregar Invitaciones
                         </a>
+                        
+                       {{--  <a class="navbar-item font-bold {{ request()->is('agregarinvitacion') ? 'is-active ' : '' }} "
+                            href="{{ route('usuarios') }}">
+                            Usuarios
+                        </a> --}}
 
                         {{--  <div class="navbar-item has-dropdown is-hoverable">
                             <a class="navbar-link">

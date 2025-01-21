@@ -294,9 +294,9 @@
                     <form action="{{route('asistencia')}}"  method="post"class="flex max-md:w-full flex-col gap-4 my-2">
                         @csrf
                         <div class="w-full flex md:flex-wrap max-md:flex-col gap-4">
-                            <div class="input-group">
+                           {{--  <div class="input-group">
                                 <input type="tel" required name="telefono_personal" placeholder="Telefono" value="@if (isset($invitado->telefono_personal)) {{$invitado->telefono_personal}} @endif">
-                            </div>
+                            </div> --}}
                         </div>
                         <input type="hidden" name="telefono" value="{{$invitado->telefono}}">
                         <div class="select-group">
