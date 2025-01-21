@@ -14,13 +14,17 @@ class Invitacion extends Controller
     public function viewwelcome()
     {
         if (Acceso::check()) {
-            $novio_2 = Invitados::where('novios', 'Alonso')->whereNotNull('adultos')->sum('adultos');
-            $novio_1 = Invitados::where('novios', 'Alonso')->whereNull('adultos')->count();
-            $novio = $novio_1 + $novio_2;
             $novia_1 = Invitados::where('novios', 'Chanell')->whereNotNull('adultos')->sum('adultos');
             $novia_2 = Invitados::where('novios', 'Chanell')->whereNull('adultos')->count();
             $novia = $novia_1+ $novia_2;
-            return view('admin.index')->with('Invitados_novio', $novio)->with('Invitados_novia',$novia);
+
+            $novio_2 = Invitados::where('novios', 'Alonso')->whereNotNull('adultos')->sum('adultos');
+            $novio_1 = Invitados::where('novios', 'Alonso')->whereNull('adultos')->count();
+            $novio = $novio_1 + $novio_2;
+
+            $niños[0] = Invitados::where('novios', 'Chanell')->sum('ninos');
+            $niños[1] = Invitados::where('novios', 'Alonso')->sum('ninos');
+            return view('admin.index')->with('Invitados_novio', $novio)->with('Invitados_novia',$novia)->with('niños', $niños);
         } else {
             return view('admin.login');
         }

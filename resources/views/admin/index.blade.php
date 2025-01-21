@@ -9,7 +9,9 @@
                    @if (isset($Invitados_novia))    
                    {{$Invitados_novia}} 
                    @endif
-                   Invitados
+                   Invitados adultos @if($niños[0]!=0) y 
+                       {{$niños[0]}} niños
+                   @endif
                 </p>
             </div>
         </div>
@@ -20,7 +22,9 @@
                    @if (isset($Invitados_novio))    
                    {{$Invitados_novio}} 
                    @endif
-                   Invitados
+                   Invitados adultos @if($niños[1]!=0) y 
+                   {{$niños[1]}} niños
+               @endif
                 </p>
             </div>
 
