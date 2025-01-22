@@ -57,12 +57,12 @@
             </div>
         @else
             <div class="flex flex-col justify-center items-center">
-                <h2 class="mb-4">Ingresa tu numero de telefono para ingresa</h2>
+                <h2 class="mb-4">Ingresa tu número de teléfono para ingresar</h2>
                 <img src="/content/linea1.png" alt="linea" class="mb-2">
                 <form action="{{ route('telefono') }}" method="post"
                     class="bg-slate-50 md:w-[500px] w-11/12 px-4 py-3 items-center text-center rounded-md">
                     @csrf
-                    <p class="mb-2">Número de Telefono</p>
+                    <p class="mb-2">Número de Teléfono</p>
                     <div class="input-group mb-4">
                         <input type="tel" name="telefono" class="text-center" placeholder="322-333-33-22">
                     </div>
