@@ -23,7 +23,7 @@ Route::get('/invitaciones', [Invitacion::class, 'invitaciones'])->name('invitaci
 Route::post('/invitacion', [Invitacion::class, 'telefono'])->name('telefono');
 Route::get('/agregarinvitacion', [Invitacion::class, 'agregarinvitacion'])->name('agregarinvitacion');
 Route::post('/agregarinvitacion', [Invitacion::class, 'agregarinvitacionpost'])->name('agregarinvitacionpost');
-Route::get('/editinvitacion/{invitado}', [Invitacion::class, 'editinvitacion'])->name('editinvitacion');
+Route::get('/editinvitacion/{invitado}', [Invitacion::class, 'editinvitacion'])->name('editinvitacionpost');
 Route::get('/eliminarinvitacion/{invitado}', [Invitacion::class, 'eliminarinvitacion'])->name('eliminarinvitacion');
 
 
