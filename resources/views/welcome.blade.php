@@ -155,7 +155,7 @@
                                 <li class="splide__slide">
                                     <div class="w-full">
                                         <img src="{{ url('/storage/' . $imagen->path) }}" alt="Vector"
-                                            class="w-full h-[600px] object-cover rounded-md" />
+                                            class="w-full h-[600px] object-cover object-center rounded-md" />
                                     </div>
                                 </li>
                             @endforeach
