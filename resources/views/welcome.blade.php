@@ -15,16 +15,16 @@
 
 <body>
     {{--  @dd($imagen) --}}
-    <section class="containers md:h-svh py-24">
+    <section class="containers py-24">
         <div class="wrapper">
             <div class="w-full h-full flex flex-col items-center">
                 <div class="flex">
                     @if (isset($invitado))
                         <img src="{{ isset($imagen[1][0]->path) ? url('storage/' . $imagen[1][0]->path) : '/content/vector0.png' }}"
-                            alt="vector0" class="w-[650px]">
+                            alt="vector0" class="md:w-[650px] w-full">
                     @else
                         <img src="{{ isset($imagen[0][0]->path) ? url('storage/' . $imagen[0][0]->path) : '/content/vector00.png' }}"
-                            alt="vector0" class="w-[650px]">
+                            alt="vector0" class="md:w-[650px] w-full">
                     @endif
                 </div>
                 <h2 class="mb-4">Chanell y Alonso</h2>
