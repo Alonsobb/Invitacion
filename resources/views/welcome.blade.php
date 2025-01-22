@@ -171,7 +171,7 @@
                 <div class="flex flex-col w-[300px] max-md:mb-12">
                     <h2 class="cursiva mb-8">Ceremonia</h2>
                     @if (isset($invitado))
-                        <span class="mb-8 text-2xl">4:00hPM</span>
+                        <span class="mb-8 text-2xl">4:00 PM</span>
                         <span class="mb-6 text-2xl">Horario Jalisco</span>
                     @endif
                     <h4 class="mb-8 text-2xl">Templo De San Marcos</h4>
