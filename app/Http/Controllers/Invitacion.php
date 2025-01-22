@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\imagenes;
+use App\Models\Imagenes;
 use App\Models\Invitados;
 
 use Illuminate\Support\Facades\DB;
