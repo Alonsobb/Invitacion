@@ -28,9 +28,9 @@
                     @endif
                 </div>
                 <h2 class="mb-4">Chanell y Alonso</h2>
-                @if (isset($invitado))
+               {{--  @if (isset($invitado))
                     <h4>08 • Marzo • 25</h4>
-                @endif
+                @endif --}}
             </div>
         </div>
         <img class="absolute top-0 left-0 md:w-[600px] w-[350px] rotate-[65deg] opacity-35 pointer-events-none"
