@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\imagenes;
 use App\Models\Invitados;
-use DragonCode\Contracts\Cashier\Auth\Auth;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth as Acceso;
 use Illuminate\Http\Request;
@@ -13,10 +14,11 @@ class Invitacion extends Controller
 {
     public function viewwelcome()
     {
+        
         if (Acceso::check()) {
             $novia_1 = Invitados::where('novios', 'Chanell')->whereNotNull('adultos')->sum('adultos');
             $novia_2 = Invitados::where('novios', 'Chanell')->whereNull('adultos')->count();
-            $novia = $novia_1+ $novia_2;
+            $novia = $novia_1 + $novia_2;
 
             $novio_2 = Invitados::where('novios', 'Alonso')->whereNotNull('adultos')->sum('adultos');
             $novio_1 = Invitados::where('novios', 'Alonso')->whereNull('adultos')->count();
@@ -24,7 +26,7 @@ class Invitacion extends Controller
 
             $niños[0] = Invitados::where('novios', 'Chanell')->sum('ninos');
             $niños[1] = Invitados::where('novios', 'Alonso')->sum('ninos');
-            return view('admin.index')->with('Invitados_novio', $novio)->with('Invitados_novia',$novia)->with('niños', $niños);
+            return view('admin.index')->with('Invitados_novio', $novio)->with('Invitados_novia', $novia)->with('niños', $niños);
         } else {
             return view('admin.login');
         }
@@ -40,7 +42,7 @@ class Invitacion extends Controller
             })->when($request->query('novios'), function ($query) use ($request) {
                 $query->where('novios', 'LIKE', '%' . $request->query('novios') . '%');
             })->orderBy('novios', 'desc')
-            ->get();
+                ->get();
 
             return view('admin.invitaciones')->with('invitados', $invitados);
         } else {
@@ -88,17 +90,21 @@ class Invitacion extends Controller
 
     public function invitadoEspecial($invitado = null)
     {
+        $principal[0] = Imagenes::where('posision', '=', 0)->where('estatus', '0')->get();
+        $principal[1] = Imagenes::where('posision', '=', 1)->where('estatus', '0')->get();
+        $principal[2] = Imagenes::where('posision', '=', 2)->where('estatus', '0')->get();
+        $galeria = Imagenes::where('posision', '=', value: 3)->where('estatus', '0')->get();
         if ($invitado != null) {
 
             $usuarios = Invitados::where('telefono', $invitado)->get();
             if ($usuarios->isEmpty()) {
-                return view('welcome');
+                return view('welcome')->with('imagen', $principal)->with('galeria', $galeria);
             } else {
-                return view('welcome')->with('invitado', $usuarios[0]);
+                return view('welcome')->with('invitado', $usuarios[0])->with('imagen', $principal)->with('galeria', $galeria);
 
             }
         }
-        return view('welcome');
+        return view('welcome')->with('imagen', $principal)->with('galeria', $galeria);
     }
     public function telefono(Request $request)
     {
@@ -125,7 +131,7 @@ class Invitacion extends Controller
     public function editinvitacion($invitacion)
     {
         if (Acceso::check()) {
-           $data = Invitados::where('id',$invitacion)->get();
+            $data = Invitados::where('id', $invitacion)->get();
             return view('admin.agregarinvitacion')->with('data', $data[0]);
         } else {
             return view('admin.login');
@@ -143,22 +149,22 @@ class Invitacion extends Controller
         $registro = $invitados->save();
         if ($registro) {
             $path = route('invitaciones');
-        return redirect()->to($path);
+            return redirect()->to($path);
         } else {
             return back()->with('fail', 'insert failed');
         }
-    
+
     }
 
     public function eliminarinvitacion($invitacion)
     {
         if (Acceso::check()) {
-           $registro = Invitados::where('id',$invitacion)->delete();
-           if ($registro) {
-            return back()->with('success', 'Se borro correctamente');
-        } else {
-            return back()->with('fail', 'Error al eliminar');
+            $registro = Invitados::where('id', $invitacion)->delete();
+            if ($registro) {
+                return back()->with('success', 'Se borro correctamente');
+            } else {
+                return back()->with('fail', 'Error al eliminar');
+            }
         }
-        } 
     }
 }

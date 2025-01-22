@@ -11,19 +11,20 @@
     <!-- Styles / Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-{{-- @dd($invitado) --}}
+
 
 <body>
-    <!-- TODO: S -->
+    {{--  @dd($imagen) --}}
     <section class="containers md:h-svh py-24">
         <div class="wrapper">
             <div class="w-full h-full flex flex-col items-center">
-                {{-- <h2 class="cursiva mt-24">Nuestra Boda</h2> --}}
                 <div class="flex">
                     @if (isset($invitado))
-                        <img src="/content/vector0.png" alt="vector0" class="w-[650px]">
+                        <img src="{{ isset($imagen[1][0]->path) ? url('storage/' . $imagen[1][0]->path) : '/content/vector00.png' }}"
+                            alt="vector0" class="w-[650px]">
                     @else
-                        <img src="/content/vector00.png" alt="vector0" class="w-[650px]">
+                        <img src="{{ isset($imagen[0][0]->path) ? url('storage/' . $imagen[0][0]->path) : '/content/vector0.png' }}"
+                            alt="vector0" class="w-[650px]">
                     @endif
                 </div>
                 <h2 class="mb-4">Chanell y Alonso</h2>
@@ -46,7 +47,7 @@
                     <h class="text-2xl">{{ $invitado->adultos }} Adultos</h>
                 @endif
                 @if (isset($invitado->ninos))
-                    <h class="text-2xl">{{ $invitado->ninos }}  Niños</h>
+                    <h class="text-2xl">{{ $invitado->ninos }} Niños</h>
                 @endif
                 @if (isset($invitado->adultos))
                     {!! QrCode::size(300)->generate(
@@ -105,7 +106,8 @@
                 </div>
 
                 <div class="w-[300px] h-[500px]">
-                    <img src="/content/img/img001.jpeg" alt="Vector" class="w-full h-full object-cover" />
+                    <img src="{{ isset($imagen[2][0]->path) ? url('/storage/' . $imagen[2][0]->path) : '/content/img/img001.jpeg' }}"
+                        alt="Vector" class="w-full h-full object-cover" />
                 </div>
             </div>
         </div>
@@ -128,24 +130,36 @@
             <section class="splide" aria-label="Splide Basic HTML Example">
                 <div class="splide__track">
                     <ul class="splide__list">
-                        <li class="splide__slide">
-                            <div class="w-full">
-                                <img src="/content/img/img00.jpeg" alt="Vector"
-                                    class="w-full h-[600px] object-cover rounded-md" />
-                            </div>
-                        </li>
-                        <li class="splide__slide">
-                            <div class="w-full">
-                                <img src="/content/img/img001.jpeg" alt="Vector"
-                                    class="w-full h-[600px] object-cover rounded-md" />
-                            </div>
-                        </li>
-                        <li class="splide__slide">
-                            <div class="w-full">
-                                <img src="/content/img/img002.jpeg" alt="Vector"
-                                    class="w-full h-[600px] object-cover rounded-md" />
-                            </div>
-                        </li>
+                        @if (empty($galeria[0]))
+
+                            <li class="splide__slide">
+                                <div class="w-full">
+                                    <img src="/content/img/img00.jpeg" alt="Vector"
+                                        class="w-full h-[600px] object-cover rounded-md" />
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="w-full">
+                                    <img src="/content/img/img001.jpeg" alt="Vector"
+                                        class="w-full h-[600px] object-cover rounded-md" />
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="w-full">
+                                    <img src="/content/img/img002.jpeg" alt="Vector"
+                                        class="w-full h-[600px] object-cover rounded-md" />
+                                </div>
+                            </li>
+                        @else
+                            @foreach ($galeria as $imagen)
+                                <li class="splide__slide">
+                                    <div class="w-full">
+                                        <img src="{{ url('/storage/' . $imagen->path) }}" alt="Vector"
+                                            class="w-full h-[600px] object-cover rounded-md" />
+                                    </div>
+                                </li>
+                            @endforeach
+                        @endif
                     </ul>
                 </div>
             </section>
@@ -159,7 +173,6 @@
                     @if (isset($invitado))
                         <span class="mb-8 text-2xl">4:00hPM</span>
                         <span class="mb-6 text-2xl">Horario Jalisco</span>
-
                     @endif
                     <h4 class="mb-8 text-2xl">Templo De San Marcos</h4>
                     <span class="mb-8">Luis Echevarria 55, 63729 Lo de Marcos, Nay.</span>
@@ -286,19 +299,21 @@
                         <h class="text-2xl">{{ $invitado->adultos }} Adultos</h>
                     @endif
                     @if (isset($invitado->ninos))
-                        <h4 class="text-2xl">{{ $invitado->ninos }}  Niños</h4>
+                        <h4 class="text-2xl">{{ $invitado->ninos }} Niños</h4>
                     @endif
                 @endif
-                <p class="mb-4">Nuestro mejor regalo es tu presencia.</p><p>¡Gracias por formar parte de este día!</p>
+                <p class="mb-4">Nuestro mejor regalo es tu presencia.</p>
+                <p>¡Gracias por formar parte de este día!</p>
                 @if (isset($invitado))
-                    <form action="{{route('asistencia')}}"  method="post"class="flex max-md:w-full flex-col gap-4 my-2">
+                    <form action="{{ route('asistencia') }}"
+                        method="post"class="flex max-md:w-full flex-col gap-4 my-2">
                         @csrf
                         <div class="w-full flex md:flex-wrap max-md:flex-col gap-4">
-                           {{--  <div class="input-group">
+                            {{--  <div class="input-group">
                                 <input type="tel" required name="telefono_personal" placeholder="Telefono" value="@if (isset($invitado->telefono_personal)) {{$invitado->telefono_personal}} @endif">
                             </div> --}}
                         </div>
-                        <input type="hidden" name="telefono" value="{{$invitado->telefono}}">
+                        <input type="hidden" name="telefono" value="{{ $invitado->telefono }}">
                         <div class="select-group">
                             <select type="text" name="asistencia" placeholder="Nombre de los asistentes">
                                 <option value="1">Si, asistiremos</option>
@@ -306,7 +321,11 @@
                             </select>
                         </div>
                         <div class="textarea-group">
-                            <textarea type="text" name="comentario_personal" placeholder="Mensajes para los novios" >@if (isset($invitado->comentario_personal)) {{$invitado->comentario_personal}} @endif</textarea>
+                            <textarea type="text" name="comentario_personal" placeholder="Mensajes para los novios">
+@if (isset($invitado->comentario_personal))
+{{ $invitado->comentario_personal }}
+@endif
+</textarea>
                         </div>
                         <div class="flex justify-center">
                             <button class="btn-primary mt-4">Enviar</button>
