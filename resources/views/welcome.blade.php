@@ -20,10 +20,10 @@
             <div class="w-full h-full flex flex-col items-center">
                 <div class="flex">
                     @if (isset($invitado))
-                        <img src="{{ isset($imagen[1][0]->path) ? url('storage/' . $imagen[1][0]->path) : '/content/vector00.png' }}"
+                        <img src="{{ isset($imagen[1][0]->path) ? url('storage/' . $imagen[1][0]->path) : '/content/vector0.png' }}"
                             alt="vector0" class="w-[650px]">
                     @else
-                        <img src="{{ isset($imagen[0][0]->path) ? url('storage/' . $imagen[0][0]->path) : '/content/vector0.png' }}"
+                        <img src="{{ isset($imagen[0][0]->path) ? url('storage/' . $imagen[0][0]->path) : '/content/vector00.png' }}"
                             alt="vector0" class="w-[650px]">
                     @endif
                 </div>
