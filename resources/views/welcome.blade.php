@@ -204,9 +204,8 @@
             <div class="border-2 md:w-[600px] md:p-24 p-12 rounded-lg">
                 <i class="fa-solid fa-envelope text-5xl text-amber-900/30 mb-12"></i>
                 <h2 class="mb-4">SUGERENCIA DE REGALO</h2>
-                <h4 class="cursiva mb-4">Lluvia de Sobres</h4>
-                <p>Nuestro mejor regalo es tu presencia. Sin embargo, si deseas obsequiarnos algo estaremos recibiendo
-                    sobres el día del evento. ¡Gracias por formar parte de este día!</p>
+                <h4 class="cursiva mb-4">@if (isset($data->titulo_mesa)) {{$data->titulo_mesa}}@endif</h4>
+                <p>@if (isset($data->mensaje)) {{$data->mensaje}}@endif</p>
                     @if (isset($data->mesa))
                     <a href="{{$data->mesa}}" class="btn-mamalon ">Mesa de regalos</a>
                     @endif
