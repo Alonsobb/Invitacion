@@ -35,13 +35,16 @@ class Invitacion extends Controller
     {
         if (Acceso::check()) {
 
-            $invitados = Invitados::when($request->query('nombre'), function ($query) use ($request) {
-                $query->where('nombre', 'LIKE', '%' . $request->query('nombre') . '%');
-            })->when($request->query('telefono'), function ($query) use ($request) {
-                $query->where('telefono', 'LIKE', '%' . $request->query('telefono') . '%');
-            })->when($request->query('novios'), function ($query) use ($request) {
-                $query->where('novios', 'LIKE', '%' . $request->query('novios') . '%');
-            })->orderBy('novios', 'desc')
+
+            $eliminado = $request->query('eliminado')|| null;
+         
+
+            $invitados = Invitados::
+              when($request->query('nombre'), function ($query) use ($request) {$query->where('nombre', 'LIKE', '%' . $request->query('nombre') . '%'); })
+            ->when($request->query('telefono'), function ($query) use ($request) {$query->where('telefono', 'LIKE', '%' . $request->query('telefono') . '%');})
+            ->when($request->query('novios'), function ($query) use ($request) {$query->where('novios', 'LIKE', '%' . $request->query('novios') . '%');})
+            ->where('estatus', null)
+            ->orderBy('novios', 'desc')
                 ->get();
 
             return view('admin.invitaciones')->with('invitados', $invitados);
@@ -159,7 +162,9 @@ class Invitacion extends Controller
     public function eliminarinvitacion($invitacion)
     {
         if (Acceso::check()) {
-            $registro = Invitados::where('id', $invitacion)->delete();
+            $registro = Invitados::find($invitacion);
+            $registro->estatus = 1;
+            $registro = $registro->save();
             if ($registro) {
                 return back()->with('success', 'Se borro correctamente');
             } else {

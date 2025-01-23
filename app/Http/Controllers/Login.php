@@ -21,9 +21,11 @@ class Login extends Controller
 			'user' => 'required',
 			'password' => 'required',
 		]);
-       
-
-if(Auth::attempt(['user'=>$request->user, 'password'=>$request->password ])){
+       $remenber = 0;
+        if($request->remember){
+            $remenber= 1;
+        }
+if(Auth::attempt(['user'=>$request->user, 'password'=>$request->password, 'active' => $remenber])){
     $path = route('dashboard');
     return redirect()->to($path );
 }else{
