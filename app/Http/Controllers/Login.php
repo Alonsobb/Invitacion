@@ -21,11 +21,11 @@ class Login extends Controller
 			'user' => 'required',
 			'password' => 'required',
 		]);
-       $remenber = 0;
-        if(isset($request->remember)){
+     /*   $remenber = 0;
+        if(isset($request->remember){
             $remenber= 1;
-        }
-if(Auth::attempt(['user'=>$request->user, 'password'=>$request->password])){
+        } */
+if(Auth::attempt(['user'=>$request->user, 'password'=>$request->password,])){
     $path = route('dashboard');
     return redirect()->to($path );
 }else{
