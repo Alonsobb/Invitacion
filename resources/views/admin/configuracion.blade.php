@@ -14,15 +14,15 @@
             <x-forms.input titulo="Padrino" name="padrino" placeholder="Padrino" :value="$data->padrino" />
             <x-forms.input titulo="Madrina" name="madrina" placeholder="Madrina" :value="$data->madrina" />
             <x-forms.input titulo="Titulo Mesa" name="titulo_mesa" placeholder="Titulo Mesa" :value="$data->titulo_mesa" />
-            <x-forms.input titulo="Mensaje de mesa" name="mensaje" placeholder="Mensaje de mesa" :value="$data->mensaje" />
-            <x-forms.input titulo="Enlace mesa" name="mesa" placeholder="Enlace mesa" :value="$data->mesa" />
+            <x-forms.textarea titulo="Mensaje de mesa" name="mensaje" placeholder="Mensaje de mesa" :value="$data->mensaje" />
+            <x-forms.input titulo="Enlace mesa" name="mesa" placeholder="https://ejemplo/mesa" :value="$data->mesa" />
                 <div class="mt-4 mb-2">
                     <div class="notification is-danger ">
                         <button class="delete !top-0 "></button>
                         Usa los el termino "<strong>--enlace--</strong>" para asignar la url con la invitacion
                     </div>
                 </div>
-            <x-forms.textarea type="textarea" titulo="Mensaje de whatsapp" name="mensaje_whatsapp"
+            <x-forms.textarea  titulo="Mensaje de whatsapp" name="mensaje_whatsapp"
                 placeholder="Mensaje de whatsapp" :value="$data->mensaje_whatsapp" />
             <div class="field is-grouped">
                 <div class="control">

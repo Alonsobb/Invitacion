@@ -101,13 +101,15 @@ class Invitacion extends Controller
         $principal[1] = Imagenes::where('posision', '=', 1)->where('estatus', '0')->get();
         $principal[2] = Imagenes::where('posision', '=', 2)->where('estatus', '0')->get();
         $galeria = Imagenes::where('posision', '=', value: 3)->where('estatus', '0')->get();
+        $data = Configuracion::where('id', '1')->get();
         if ($invitado != null) {
 
             $usuarios = Invitados::where('telefono', $invitado)->get();
             if ($usuarios->isEmpty()) {
                 return view('welcome')->with('imagen', $principal)->with('galeria', $galeria);
             } else {
-                return view('welcome')->with('invitado', $usuarios[0])->with('imagen', $principal)->with('galeria', $galeria);
+                /* dd($data[0]->mesa); */
+                return view('welcome')->with('invitado', $usuarios[0])->with('imagen', $principal)->with('galeria', $galeria)->with('data',$data[0]);
 
             }
         }

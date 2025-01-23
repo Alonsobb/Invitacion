@@ -205,6 +205,9 @@
                 <h4 class="cursiva mb-4">Lluvia de Sobres</h4>
                 <p>Nuestro mejor regalo es tu presencia. Sin embargo, si deseas obsequiarnos algo estaremos recibiendo
                     sobres el día del evento. ¡Gracias por formar parte de este día!</p>
+                    @if (isset($data->mesa))
+                    <a href="{{$data->mesa}}" class="button">Mesa de regalos</a>
+                    @endif
             </div>
         </div>
         <img class="absolute top-1/2 right-4 md:w-[600px] w-[350px] -translate-y-1/2 opacity-25 pointer-events-none"
