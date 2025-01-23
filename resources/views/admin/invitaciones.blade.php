@@ -61,7 +61,9 @@ $numero=1;
                             <th>{{ isset($invitado->ninos) ? $invitado->ninos : '0' }}</th>
                             <th>{{ $invitado->telefono }}</th>
                             <th>
-                                <a href="https://wa.me/+52{{$invitado->telefono}}?text=Chanell y Alonso están felices de que acudas a la celebración de su boda, mas detalles da clic en el link chanellyalonso.com/invitacion/{{$invitado->telefono}}" class="button is-success" >Enviar</a>
+                                @php $url =str_replace("--enlace--",'https://chanellyalonso.com/invitacion/'.$invitado->telefono  ,$enlace, ) @endphp
+                          
+                                <a href="https://wa.me/+52{{$invitado->telefono}}?text={{$url}}" class="button is-success" >Enviar</a>
                                 <button class="button is-info"
                                     onclick="copy('{{ route('invitado', $invitado->telefono) }}')">Copiar</button>
                                 <a class="button is-info"
@@ -76,6 +78,7 @@ $numero=1;
             </table>
         </div>
     </div>
+
 @endsection
 
 @section('script')

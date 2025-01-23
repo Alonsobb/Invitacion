@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Configuracion;
 use App\Models\Imagenes;
 use App\Models\Invitados;
 
@@ -46,8 +47,11 @@ class Invitacion extends Controller
             ->where('estatus', null)
             ->orderBy('novios', 'desc')
                 ->get();
-
-            return view('admin.invitaciones')->with('invitados', $invitados);
+                $mensaje = Configuracion::where('id',1)->get();
+                if(empty($mensaje[0]->mensaje_whatsapp)){
+                    $mensaje ="Chanell y Alonso están felices de que acudas a la celebración de su boda, mas detalles da clic en el link --enlace--";
+                }
+            return view('admin.invitaciones')->with('invitados', $invitados)->with('enlace', $mensaje[0]->mensaje_whatsapp);
         } else {
             return view('admin.login');
         }
@@ -156,7 +160,6 @@ class Invitacion extends Controller
         } else {
             return back()->with('fail', 'insert failed');
         }
-
     }
 
     public function eliminarinvitacion($invitacion)

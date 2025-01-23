@@ -12,13 +12,8 @@
             <span class="text-red-600 text-sm font-bold">*</span>
         @endisset
     </label>
-    <input type="{{$type}}" id="{{ empty($id) ? $name : $id }}" @isset($required) required @endisset
-        name="{{ $name }}" class="input" {{ $attributes }}
-        @if ($errors->all()) value="{{ old($name) }}" @endif
-        @isset($value)
-        value="{{ $value }}"
-        @endisset
-        >
+    <textarea type="{{$type}}" id="{{ empty($id) ? $name : $id }}" @isset($required) required @endisset
+        name="{{ $name }}" class="textarea" {{ $attributes }} >@if($errors->all()){{old($name)}}@endif @isset($value){{ $value }}@endisset</textarea>
     @error($name)
         <span class="text-red-600">
             <i class="fa-solid fa-circle-exclamation"></i>

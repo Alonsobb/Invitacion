@@ -24,13 +24,13 @@ class Configuracion extends Controller
             
 
             $configuracion = ModelsConfiguracion::find(1, 'id');
-                $configuracion->nombre_invitacion=$request->nombre_invitacion;
-                $configuracion->papa_novio=$request->papa_novio;
-                $configuracion->mama_novio=$request->mama_novio;
-                $configuracion->papa_novia=$request->papa_novia;
-                $configuracion->mama_novia=$request->mama_novia;
-                $configuracion->padrino=$request->padrino;
-                $configuracion->madrina=$request->madrina;
+                $configuracion->nombre_invitacion=ucwords(strtolower($request->nombre_invitacion));
+                $configuracion->papa_novio=ucwords(strtolower($request->papa_novio));
+                $configuracion->mama_novio=ucwords(strtolower($request->mama_novio));
+                $configuracion->papa_novia=ucwords(strtolower($request->papa_novia));
+                $configuracion->mama_novia=ucwords(strtolower($request->mama_novia));
+                $configuracion->padrino=ucwords(strtolower($request->padrino));
+                $configuracion->madrina=ucwords(strtolower($request->madrina));
                 $configuracion->titulo_mesa=$request->titulo_mesa;
                 $configuracion->mensaje=$request->mensaje;
                 $configuracion->mesa=$request->mesa;
