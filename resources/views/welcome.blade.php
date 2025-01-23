@@ -10,6 +10,8 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <!-- Styles / Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
+    
 </head>
 
 
@@ -206,7 +208,7 @@
                 <p>Nuestro mejor regalo es tu presencia. Sin embargo, si deseas obsequiarnos algo estaremos recibiendo
                     sobres el día del evento. ¡Gracias por formar parte de este día!</p>
                     @if (isset($data->mesa))
-                    <a href="{{$data->mesa}}" class="button">Mesa de regalos</a>
+                    <a href="{{$data->mesa}}" class="btn-mamalon ">Mesa de regalos</a>
                     @endif
             </div>
         </div>

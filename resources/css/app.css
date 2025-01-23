@@ -45,6 +45,9 @@ p {
 .btn-primary {
     @apply py-2 px-4 bg-amber-900/20 hover:bg-amber-900/30 rounded-md;
 }
+.btn-mamalon {
+    @apply py-2 px-4 bg-[#f3f4f6] hover:bg-[#e5e7eb] rounded-md font-extrabold;
+}
 
 .input-group {
     @apply relative flex-1;
