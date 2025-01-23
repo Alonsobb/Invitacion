@@ -278,7 +278,7 @@
                 <h2 class="text-2xl mb-4">Código de vestimenta</h2>
                 <h4 class="cursiva mb-4">​Formal</h4>
                 <div class="flex justify-center">
-                    <a href="" class="btn-primary mt-4">Ver ideas</a>
+                    <a href="https://pin.it/3eRLVPB0u" class="btn-primary mt-4">Ver ideas</a>
                 </div>
             </div>
         </div>
