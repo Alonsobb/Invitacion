@@ -22,10 +22,10 @@ class Login extends Controller
 			'password' => 'required',
 		]);
        $remenber = 0;
-        if($request->remember){
+        if(isset($request->remember)){
             $remenber= 1;
         }
-if(Auth::attempt(['user'=>$request->user, 'password'=>$request->password, 'active' => $remenber])){
+if(Auth::attempt(['user'=>$request->user, 'password'=>$request->password])){
     $path = route('dashboard');
     return redirect()->to($path );
 }else{
