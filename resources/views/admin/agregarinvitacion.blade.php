@@ -1,8 +1,6 @@
 @extends('layout.index')
 
 @section('css')
-  
-
     /* Contenedor del formulario */
     .form-container {
     background-color: #ffffff;
@@ -78,81 +76,88 @@
 @endsection
 
 @section('app')
+    <div class="w-11/12 flex justify-center ">
 
-<div class="w-11/12 flex justify-center ">
 
-
-    <form action="@if (isset($data))    
-    {{ route('editinvitacionpost') }}  
+        <form
+            action="@if (isset($data)) {{ route('editinvitacionpost') }}  
     @else
-    {{ route('agregarinvitacionpost') }} 
-    @endif  " method="post">
-        @csrf
-    @isset($data)   
-    <input type="hidden" name="id" value="{{$data->id}}">
-    @endisset
+    {{ route('agregarinvitacionpost') }} @endif  "
+            method="post">
+            @csrf
+            @isset($data)
+                <input type="hidden" name="id" value="{{ $data->id }}">
+            @endisset
 
 
-        <br><label for="nombre">Nombre</label>
-        <input type="text" 
-        name="nombre"  
-        placeholder="Nombre" 
-        class="input  
-        @error('nombre')is-danger @enderror"  
-        @if ($errors->all()) value="{{ old('nombre') }} "@endif  @isset($data->nombre)
-       value="{{$data->nombre}}"
-    @endisset >
-        @foreach ($errors->get('nombre') as $error)
-            <p class="help is-danger">{{ $error }}</p>
-        @endforeach
+            <br><label for="nombre">Nombre</label>
+            <input type="text" name="nombre" placeholder="Nombre"
+                class="input  
+        @error('nombre')is-danger @enderror"
+                @if ($errors->all()) value="{{ old('nombre') }} " @endif
+                @isset($data->nombre)
+       value="{{ $data->nombre }}"
+    @endisset>
+            @foreach ($errors->get('nombre') as $error)
+                <p class="help is-danger">{{ $error }}</p>
+            @endforeach
 
 
-        <br><label for="telefono">Telefono</label>
-        <input type="text" name="telefono" placeholder="Telefono"  @if ($errors->get('telefono')) class="input is-danger" @endif  @if ($errors->all()) value="{{ old('telefono') }}"  @endif class="input"  @isset($data->telefono)
-        value="{{$data->telefono}}"
-     @endisset  >
-        @foreach ($errors->get('telefono') as $error)
-            <p class="help is-danger">{{ $error }}</p>
-        @endforeach
-
-
-        <br><label for="adultos">Adultos</label>
-        <input type="text" name="adultos" placeholder="Adultos"@if ($errors->all())  value="{{ old('adultos') }}" @endif class="input"  @isset($data->adultos)
-        value="{{$data->adultos}}"
-     @endisset >
-        @foreach ($errors->get('adultos') as $error)
-            <p class="help is-danger">{{ $error }}</p>
-        @endforeach
-
-
-        <br><label for="ninos">Niños</label>
-        <input type="text" name="ninos"  placeholder="Niños" @if ($errors->all()) value="{{ old('ninos') }}" @endif class="input"  @isset($data->ninos)
-        value="{{$data->ninos}}"
+            <br><label for="telefono">Telefono</label>
+            <input type="text" name="telefono" placeholder="Telefono"
+                @if ($errors->get('telefono')) class="input is-danger" @endif
+                @if ($errors->all()) value="{{ old('telefono') }}" @endif class="input"
+                @isset($data->telefono)
+        value="{{ $data->telefono }}"
      @endisset>
-        @foreach ($errors->get('ninos') as $error)
-            <p class="help is-danger">{{ $error }}</p>
-        @endforeach
+            @foreach ($errors->get('telefono') as $error)
+                <p class="help is-danger">{{ $error }}</p>
+            @endforeach
 
 
-        <br><label for="comentario">Comentario</label>
-        <input type="textarea" name="comentario"  placeholder="Comentario" @if ($errors->all())  value="{{ old('comentario') }}" @endif class="input"  @isset($data->comentario)
-        value="{{$data->comentario}}"
-     @endisset >
-        <input type="submit" class="button is-success" value="acceptar">
-    </form>
-</div>
+            <br><label for="adultos">Adultos</label>
+            <input type="text" name="adultos"
+                placeholder="Adultos"@if ($errors->all()) value="{{ old('adultos') }}" @endif class="input"
+                @isset($data->adultos)
+        value="{{ $data->adultos }}"
+     @endisset>
+            @foreach ($errors->get('adultos') as $error)
+                <p class="help is-danger">{{ $error }}</p>
+            @endforeach
+
+
+            <br><label for="ninos">Niños</label>
+            <input type="text" name="ninos" placeholder="Niños"
+                @if ($errors->all()) value="{{ old('ninos') }}" @endif class="input"
+                @isset($data->ninos)
+        value="{{ $data->ninos }}"
+     @endisset>
+            @foreach ($errors->get('ninos') as $error)
+                <p class="help is-danger">{{ $error }}</p>
+            @endforeach
+
+
+            <br><label for="comentario">Comentario</label>
+            <input type="textarea" name="comentario" placeholder="Comentario"
+                @if ($errors->all()) value="{{ old('comentario') }}" @endif class="input"
+                @isset($data->comentario)
+        value="{{ $data->comentario }}"
+     @endisset>
+            <input type="submit" class="button is-success" value="acceptar">
+        </form>
+    </div>
 @endsection
 
 @section('script')
-@if( session()->has('success') )
-<script>
-    Swal.fire({
-  position: "top-end",
-  icon: "success",
-  title: "Se agrego correctamente",
-  showConfirmButton: false,
-  timer: 1500
-});
-</script>
-@endif
+    @if (session()->has('success'))
+        <script>
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Se agrego correctamente",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        </script>
+    @endif
 @endsection

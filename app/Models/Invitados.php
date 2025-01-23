@@ -9,6 +9,5 @@ class Invitados extends Model
     protected $table = 'invitados';
     protected $fillable = [
         'estatus',
-       
     ];
 }

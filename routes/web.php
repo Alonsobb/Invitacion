@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Configuracion;
 use App\Http\Controllers\Imagenes;
 use App\Http\Controllers\Invitacion;
 use App\Http\Controllers\Login;
@@ -35,6 +36,8 @@ Route::post('/upload', [Imagenes::class, 'upload'])->name('upload');
 Route::get('/showimg/{img}', [Imagenes::class, 'show'])->name('showimg');
 Route::post('/eliminarimagen', [Imagenes::class, 'eliminarimagen'])->name('eliminarimagen');
 
+Route::get('/configuracion', [Configuracion::class, 'configuracion'])->name('configuracion');
+Route::post('/configuracion', [Configuracion::class, 'configuracionpost'])->name('configuracionpost');
 
 
 

@@ -56,6 +56,10 @@
                             href="{{ route('pageImages') }}">
                             Imagenes
                         </a>
+                        <a class="navbar-item font-bold {{ request()->is('configuracion') ? 'is-active ' : '' }} "
+                            href="{{ route('configuracion') }}">
+                            Configuracion
+                        </a>
                         
                        {{--  <a class="navbar-item font-bold {{ request()->is('agregarinvitacion') ? 'is-active ' : '' }} "
                             href="{{ route('usuarios') }}">
