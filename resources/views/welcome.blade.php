@@ -99,8 +99,8 @@
                     <div class="my-8">
                         <h2 class="my-4">Acompañados de nuestros padrinos</h2>
                         <div class="">
-                            <p>Benita Rodrigez</p>
-                            <p>Javier Bernal</p>
+                            <p>Benita Rodriguez Sanchez</p>
+                            <p>Javier Bernal Gomez</p>
                         </div>
                     </div>
                 </div>
