@@ -1,9 +1,9 @@
 @extends('layout.index')
 
 @section('app')
-    <div class="flex justify-center flex-col mt-[150px] ">
+    <div class="flex justify-center flex-col gap-6  mt-[150px] ">
         <div class="flex flex-wrap gap-6 justify-center">
-            <div class="card  bg-fuchsia-500  w-1/3 border h-28 ">
+            <div class="card bg-fuchsia-500  w-[450px] border h-28 ">
                 <div class="card-content w-full ">
                     <p class="title text-center">
                         Chanell lleva
@@ -17,7 +17,7 @@
                     </p>
                 </div>
             </div>
-            <div class="card bg-indigo-300 w-1/3 h-28">
+            <div class="card bg-indigo-300 w-[450px] h-28">
                 <div class="card-content">
                     <p class="title text-center">
                         Alonso lleva
@@ -32,8 +32,8 @@
                 </div>
             </div>
         </div>
-        <div class="flex flex-wrap justify-center">
-            <div class="card bg-green-400 w-1/3 h-28">
+        <div class="flex flex-wrap gap-6   justify-center">
+            <div class="card bg-green-400 w-[450px] h-28">
                 <div class="card-content">
                     <p class="title text-center">
                         El total de invitados son: {{$Invitados_novia+$Invitados_novio+$niños[0]+$niños[1]}}
