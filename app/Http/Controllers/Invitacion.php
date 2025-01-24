@@ -17,16 +17,16 @@ class Invitacion extends Controller
     {
         
         if (Acceso::check()) {
-            $novia_1 = Invitados::where('novios', 'Chanell')->whereNotNull('adultos')->sum('adultos');
-            $novia_2 = Invitados::where('novios', 'Chanell')->whereNull('adultos')->count();
+            $novia_1 = Invitados::where('novios', 'Chanell')->whereNotNull('adultos')->where('estatus', null)->sum('adultos');
+            $novia_2 = Invitados::where('novios', 'Chanell')->whereNull('adultos')->where('estatus', null)->count();
             $novia = $novia_1 + $novia_2;
 
-            $novio_2 = Invitados::where('novios', 'Alonso')->whereNotNull('adultos')->sum('adultos');
-            $novio_1 = Invitados::where('novios', 'Alonso')->whereNull('adultos')->count();
+            $novio_2 = Invitados::where('novios', 'Alonso')->whereNotNull('adultos')->where('estatus', null)->sum('adultos');
+            $novio_1 = Invitados::where('novios', 'Alonso')->whereNull('adultos')->where('estatus', null)->count();
             $novio = $novio_1 + $novio_2;
 
-            $niños[0] = Invitados::where('novios', 'Chanell')->sum('ninos');
-            $niños[1] = Invitados::where('novios', 'Alonso')->sum('ninos');
+            $niños[0] = Invitados::where('novios', 'Chanell')->where('estatus', null)->sum('ninos');
+            $niños[1] = Invitados::where('novios', 'Alonso')->where('estatus', null)->sum('ninos');
             return view('admin.index')->with('Invitados_novio', $novio)->with('Invitados_novia', $novia)->with('niños', $niños);
         } else {
             return view('admin.login');
